@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/9e9931aed0.js" crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./CSS/menu.css">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <title>Invite - Travel Japan</title>
+</head>
+<body>
+    <!-- 메뉴바 상단 고정 -->
+    <div class="header">
+        <h1>
+            <div class="header-click">
+                <i class="fa-solid fa-globe"></i>
+                    <a href="https://kimyeoju.github.io/Orumi_Project/">Travel Japan</a>
+            </div>
+        </h1>
+        <ul class="menu">
+            <li><a href="./index.html#city-title">이용 방법</a></li>
+            <li><a href="./index.html#chat-box">여행 계획</a></li>
+            <li><a href="./invite.html">초대하기</a></li>
+            <li><a href="./join.html">회원가입</a></li>
+            <li><a href="./login.html">로그인</a></li>
+        </ul>
+        <a href="#" class="header_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </div>
+    <!-- header -->
+    <div class="invite">
+        <div>
+            <h1 class="title">친구 초대하기</h1>
+            <h2 class="description">Travel Japan을 친구들과 함께 즐겨보세요!</h2>
+        </div>
+        <!-- main -->
+        <!-- 초대 정보 입력 -->
+        <form class="invite-form">
+            <div class="invite-section">
+                <h3>이메일로 초대하기</h3>
+                <div>
+                    <label class="label-width" for="friend-email">친구 이메일</label>
+                    <input type="email" id="friend-email" name="FriendEmail" placeholder="friend@example.com" required>
+                </div>
+                <div>
+                    <label class="label-width" for="friend-name">친구 이름</label>
+                    <input type="text" id="friend-name" name="FriendName" placeholder="친구의 이름을 입력해주세요">
+                </div>
+                <div>
+                    <label class="label-width" for="invite-message">초대 메시지</label>
+                    <textarea id="invite-message" name="InviteMessage" rows="4" placeholder="함께 일본 여행을 계획해보아요! Travel Japan에서 만나요."></textarea>
+                </div>
+            </div>
+
+            <div class="invite-section">
+                <h3>링크로 초대하기</h3>
+                <div class="share-link">
+                    <label class="label-width">공유 링크</label>
+                    <div class="link-container">
+                        <input type="text" id="share-link" value="https://kimyeoju.github.io/Orumi_Project/" readonly>
+                        <button type="button" id="copy-link" class="copy-button">복사</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="invite-section">
+                <h3>소셜 미디어로 공유하기</h3>
+                <div class="social-share">
+                    <button type="button" class="social-button kakao" onclick="shareKakao()">
+                        <i class="fas fa-comment"></i> 카카오톡
+                    </button>
+                    <button type="button" class="social-button facebook" onclick="shareFacebook()">
+                        <i class="fab fa-facebook-f"></i> 페이스북
+                    </button>
+                    <button type="button" class="social-button twitter" onclick="shareTwitter()">
+                        <i class="fab fa-twitter"></i> 트위터
+                    </button>
+                </div>
+            </div>
+
+            <!-- 초대하기 버튼 -->
+            <button class="submit-button" type="submit">이메일 초대 보내기</button>
+        </form>
+        
+        <div id="invite-result" class="invite-result" style="display: none;">
+            <p>초대가 성공적으로 전송되었습니다!</p>
+        </div>
+    </div>
+    
+    <script src="./JS/menu.js"></script>
+    <script src="./JS/invite.js"></script>
+</body>
+</html>
