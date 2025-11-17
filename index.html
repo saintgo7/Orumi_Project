@@ -184,6 +184,54 @@
             <p>어떤 여행을 꿈꾸시나요?<i id="plane-icon"class="fa-solid fa-plane-departure"></i></p>
         </div>
 
+        <!-- API 키 설정 -->
+        <div class="api-key-container">
+            <div class="api-key-header">
+                <h3><i class="fa-solid fa-key"></i> Google Gemini API 설정</h3>
+                <button type="button" id="toggle-api-section" class="toggle-button">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+            <div id="api-key-section" class="api-key-section" style="display: none;">
+                <div class="api-key-status" id="api-key-status">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span id="api-status-text">API 키가 설정되지 않았습니다.</span>
+                </div>
+                <div class="api-key-input-group">
+                    <input
+                        type="password"
+                        id="api-key-input"
+                        placeholder="Google Gemini API 키를 입력하세요"
+                        class="api-key-input"
+                    />
+                    <button type="button" id="toggle-visibility" class="visibility-button">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+                <div class="api-key-actions">
+                    <button type="button" id="save-api-key" class="api-button save-button">
+                        <i class="fa-solid fa-floppy-disk"></i> 저장
+                    </button>
+                    <button type="button" id="clear-api-key" class="api-button clear-button">
+                        <i class="fa-solid fa-trash"></i> 삭제
+                    </button>
+                </div>
+                <div class="api-key-help">
+                    <p><i class="fa-solid fa-circle-question"></i> API 키 발급 방법:</p>
+                    <ol>
+                        <li><a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>에 접속하세요</li>
+                        <li>"Get API Key" 또는 "API 키 만들기"를 클릭하세요</li>
+                        <li>생성된 API 키를 복사하여 위 입력란에 붙여넣으세요</li>
+                        <li>저장 버튼을 클릭하면 브라우저에 안전하게 저장됩니다</li>
+                    </ol>
+                    <p class="api-security-note">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        API 키는 브라우저의 LocalStorage에 저장되며, 서버로 전송되지 않습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <!-- user 여행 일정 입력칸 -->
             <div class="chat-container">
                 <form class="chat-form" action="post">
@@ -385,6 +433,7 @@
 
     <!-- javascript 연동 -->
     <script src="./JS/data.js"></script>
+    <script src="./JS/api-key-manager.js"></script>
     <script src="./JS/loader.js"></script>
     <script src="./JS/main.js"></script>
     <script src="./JS/menu.js"></script>

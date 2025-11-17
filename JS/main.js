@@ -1,9 +1,26 @@
 // Google Gemini API
-// API 키는 https://makersuite.google.com/app/apikey 에서 발급받으세요
-const API_KEY = 'YOUR_GEMINI_API_KEY'; // 여기에 발급받은 API 키를 입력하세요
-let url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
+// API 키는 웹 페이지에서 직접 설정할 수 있습니다
 
 let $form = document.querySelector('.chat-form');
+
+// API 키를 LocalStorage에서 가져오는 함수
+function getApiKey() {
+    try {
+        return localStorage.getItem('gemini_api_key') || '';
+    } catch (error) {
+        console.error('API 키 불러오기 실패:', error);
+        return '';
+    }
+}
+
+// API URL 생성 함수
+function getApiUrl() {
+    const apiKey = getApiKey();
+    if (!apiKey) {
+        return null;
+    }
+    return `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`;
+}
 
 // 시스템 프롬프트 정의
 const systemPrompt = `당신은 일본 여행 전문가입니다. 사용자의 여행 정보를 바탕으로 구체적인 일정을 Day1, Day2, Day3 형식으로 생성해주세요.
@@ -95,6 +112,13 @@ const makePrompt = function () {
 
 // Gemini API 요청 보내는 함수
 const apiPost = async (prompt) => {
+    // API 키 확인
+    const url = getApiUrl();
+    if (!url) {
+        printAnswer('⚠️ API 키가 설정되지 않았습니다.\n\n위의 "Google Gemini API 설정" 섹션에서 API 키를 설정해주세요.\n\nAPI 키는 https://makersuite.google.com/app/apikey 에서 무료로 발급받을 수 있습니다.');
+        return;
+    }
+
     try {
         const response = await fetch(url, {
             method: "POST",
@@ -115,13 +139,13 @@ const apiPost = async (prompt) => {
         if (data.candidates && data.candidates[0] && data.candidates[0].content) {
             printAnswer(data.candidates[0].content.parts[0].text);
         } else if (data.error) {
-            printAnswer(`오류가 발생했습니다: ${data.error.message}\n\nAPI 키를 확인해주세요.`);
+            printAnswer(`❌ 오류가 발생했습니다: ${data.error.message}\n\n가능한 원인:\n1. API 키가 잘못되었습니다.\n2. API 할당량이 초과되었습니다.\n3. API 키가 활성화되지 않았습니다.\n\nAPI 키를 다시 확인하거나 새로운 키를 발급받아주세요.`);
         } else {
-            printAnswer('응답을 받지 못했습니다. 다시 시도해주세요.');
+            printAnswer('❌ 응답을 받지 못했습니다. 다시 시도해주세요.');
         }
     } catch (err) {
         console.error(err);
-        printAnswer('네트워크 오류가 발생했습니다. API 키와 인터넷 연결을 확인해주세요.');
+        printAnswer('❌ 네트워크 오류가 발생했습니다.\n\nAPI 키와 인터넷 연결을 확인해주세요.');
     }
 };
 
