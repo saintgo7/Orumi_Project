@@ -123,4 +123,6 @@ const printAnswer = (answer) => {
     chat_content.value = answer;
     // 로딩을 종료해주는 함수
     btnhide();
+    // Excel 내보내기 버튼 활성화를 위해 change 이벤트 트리거
+    chat_content.dispatchEvent(new Event('input'));
 };

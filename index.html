@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./CSS/menu.css">
     <link rel="stylesheet" href="./CSS/slide.css">
     <link rel="stylesheet" href="./CSS/style.css">
+    <!-- SheetJS for Excel export -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
     <title>Travel Japan</title>
 </head>
 
@@ -337,6 +339,12 @@
                 id="chat-content"
                 placeholder="여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)"></textarea>
             </div>
+            <!-- Excel 내보내기 버튼 -->
+            <div class="export-button-container">
+                <button id="export-excel-btn" class="export-button" onclick="exportToExcel()">
+                    <i class="fa-solid fa-file-excel"></i> Excel로 내보내기
+                </button>
+            </div>
         </div>
     </div>
 </main>
@@ -362,6 +370,6 @@
     <script src="./JS/menu.js"></script>
     <script src="./JS/reset.js"></script>
     <script src="./JS/scroll.js"></script>
+    <script src="./JS/export.js"></script>
 </body>
-</html>
 </html>
