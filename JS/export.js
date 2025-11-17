@@ -87,6 +87,64 @@ function exportToExcel() {
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "여행 일정");
 
+    // 맛집 정보 추출 및 시트 생성
+    const restaurantPattern = /(?:아침|점심|저녁|식사):\s*([^(]+)\s*\(([^)]+)\)\s*⭐([\d.]+)/g;
+    const restaurants = [];
+    let match;
+
+    while ((match = restaurantPattern.exec(content)) !== null) {
+        const restaurantName = match[1].trim();
+        const japaneseName = match[2].trim();
+        const rating = match[3];
+
+        // Google Maps 검색 URL 생성 (여행지 + 맛집명)
+        const searchQuery = `${destination} ${restaurantName} ${japaneseName}`;
+        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery)}`;
+
+        restaurants.push({
+            name: restaurantName,
+            japanese: japaneseName,
+            rating: rating,
+            url: mapsUrl
+        });
+    }
+
+    // 맛집이 있으면 별도 시트 추가
+    if (restaurants.length > 0) {
+        const restaurantData = [
+            ['🍽️ 추천 맛집 정보'],
+            [''],
+            ['맛집명', '일본어명', '평점', 'Google Maps 링크']
+        ];
+
+        restaurants.forEach(restaurant => {
+            restaurantData.push([
+                restaurant.name,
+                restaurant.japanese,
+                `⭐${restaurant.rating}`,
+                restaurant.url
+            ]);
+        });
+
+        const wsRestaurant = XLSX.utils.aoa_to_sheet(restaurantData);
+
+        // 맛집 시트 열 너비 설정
+        wsRestaurant['!cols'] = [
+            { wch: 25 },  // 맛집명
+            { wch: 25 },  // 일본어명
+            { wch: 10 },  // 평점
+            { wch: 60 }   // Google Maps 링크
+        ];
+
+        // 제목 스타일
+        wsRestaurant['A1'].s = {
+            font: { bold: true, sz: 16, color: { rgb: "E63946" } },
+            alignment: { horizontal: "center", vertical: "center" }
+        };
+
+        XLSX.utils.book_append_sheet(wb, wsRestaurant, "맛집 정보");
+    }
+
     // 파일명 생성
     const fileName = `일본여행계획_${destination}_${dateStr}.xlsx`;
 

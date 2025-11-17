@@ -339,6 +339,20 @@
                 id="chat-content"
                 placeholder="여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)"></textarea>
             </div>
+            <!-- Google Maps 지도 표시 -->
+            <div id="map-container" class="map-container" style="display: none;">
+                <h3 class="map-title">
+                    <i class="fa-solid fa-map-location-dot"></i> 여행지 지도
+                </h3>
+                <div id="travel-map" class="travel-map">
+                    <!-- 지도가 여기에 표시됩니다 -->
+                </div>
+                <div class="map-links">
+                    <a id="google-maps-link" href="#" target="_blank" class="map-link">
+                        <i class="fa-brands fa-google"></i> 구글 맵에서 크게 보기
+                    </a>
+                </div>
+            </div>
             <!-- Excel 내보내기 버튼 -->
             <div class="export-button-container">
                 <button id="export-excel-btn" class="export-button" onclick="exportToExcel()">
@@ -370,6 +384,7 @@
     <script src="./JS/menu.js"></script>
     <script src="./JS/reset.js"></script>
     <script src="./JS/scroll.js"></script>
+    <script src="./JS/map.js"></script>
     <script src="./JS/export.js"></script>
 </body>
 </html>
