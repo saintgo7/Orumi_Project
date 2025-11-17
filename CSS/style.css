@@ -163,14 +163,14 @@ legend{
 
 /* popular city 인기도시 */
 
-#location-icon{
+#location-icon {
     font-size: xx-large;
     padding-right: 10px;
     font-weight: bold;
     color: var(--accent-color);
-}
-
-.popular-city-title {
+  }
+  
+  .popular-city-title {
     margin-top: 20px;
     margin-bottom: 10px;
     display: flex;
@@ -178,28 +178,62 @@ legend{
     align-items: center;
     font-weight: bold;
     font-size: 28px;
-}
-
-.popular-city-list p{
+    line-height: 1.2; /* 줄간격 조절 */
+  }
+  
+  .popular-city-list p {
     font-size: large;
     font-weight: bold;
-}
-
-
-.popular-city-list img{
+    line-height: 1.4; /* 줄간격 */
+    margin-top: 8px;  /* 텍스트 위쪽 여백 */
+    margin-bottom: 8px; /* 텍스트 아래 여백 */
+  }
+  
+  .popular-city-list img {
     transition: all 0.2s linear;
     width: 100%;
     height: auto;
-}
-
-.city-box:hover img{
+  }
+  
+  .city-box:hover img {
     transform: scale(1.1);
-}
-
-.popular-city-list{
+  }
+  
+  .popular-city-list {
     display: flex;
-}
-
+  }
+  
+  .city-box {
+    float: left;
+    width: 440px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 4px;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  /* city title */
+  #city-title {
+    font-family: 'Abril Fatface', cursive;
+    font-size: x-large;
+    color: black;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  
+  /* 설명글 */
+  .city-desc {
+    font-weight: 300; /* 얇게 */
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+    line-height: 1.5;      /* 줄간격 */
+    margin-top: 4px;       /* 위 여백 */
+    margin-bottom: 12px;   /* 아래 여백 */
+    font-family: 'IBM Plex Sans KR', sans-serif;
+  }
+  
 
 .city-box{
     float: left;
