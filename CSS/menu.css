@@ -102,3 +102,47 @@ a {
         display: flex;
     }
 }
+
+/* [ 기존 menu.css 코드 (제공해주신 내용) ] */
+:root {
+    --text-color: #6A7BA2;
+    --background-color: #FFD4D4;
+    --accent-color: #A0C3D2;
+}
+
+/* ... (중간의 기존 CSS 코드 생략) ... */
+
+@media screen and (max-width: 768px){
+    /* ... (중간의 기존 @media 코드 생략) ... */
+    .menu.active,
+    .menu_icons.active{
+        display: flex;
+    }
+}
+
+
+/* ▼▼▼ [추가된 코드] ▼▼▼ */
+
+/* 1. 로고 텍스트 애니메이션을 위한 CSS */
+#brand-logo-text {
+    /* 글자가 바뀔 때 0.4초 동안 부드럽게 사라지고 나타나도록 설정 */
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* 2. 특정 페이지에서 메뉴 숨기기 */
+
+/* 회원가입 페이지에서 불필요한 메뉴 숨기기 */
+.page-join .menu li:nth-child(1), /* 이용 방법 */
+.page-join .menu li:nth-child(2), /* 여행 계획 */
+.page-join .menu li:nth-child(3)  /* 회원가입 (현재 페이지) */
+{
+    display: none;
+}
+
+/* 로그인 페이지에서 불필요한 메뉴 숨기기 (예시) */
+.page-login .menu li:nth-child(1), /* 이용 방법 */
+.page-login .menu li:nth-child(2), /* 여행 계획 */
+.page-login .menu li:nth-child(4)  /* 로그인 (현재 페이지) */
+{
+    display: none;
+}

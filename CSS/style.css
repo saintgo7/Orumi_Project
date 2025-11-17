@@ -585,3 +585,102 @@ select,
     transition: opacity 1s, transform 1s;
 }
 
+/* style.css 파일 하단에 추가 */
+
+/* 비밀번호 input 타입 스타일 (기존 input과 맞춤) */
+[type="password"] {
+    width:290px;
+    height:32px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 10px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    padding-left: 8px; /* input 통일성 */
+}
+
+/* 폼 input placeholder 스타일 */
+[type="text"]::placeholder,
+[type="password"]::placeholder {
+    color: #aaa;
+}
+
+
+/* 소셜 로그인 버튼 컨테이너 */
+.social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* 버튼 사이 간격 */
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+/* 개별 소셜 버튼 */
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 아이콘과 텍스트 중앙 정렬 */
+    width: 100%;
+    height: 45px;
+    border-radius: 4px;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: opacity 0.2s;
+}
+
+.social-btn:hover {
+    opacity: 0.8;
+}
+
+/* 소셜 버튼 내부 이미지(로고) */
+.social-btn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* 플랫폼별 스타일 */
+.social-btn.kakao {
+    background-color: #FEE500;
+    color: #191919;
+}
+
+.social-btn.naver {
+    background-color: #03C75A;
+    color: #FFFFFF;
+}
+
+.social-btn.google {
+    background-color: #FFFFFF;
+    color: #444444;
+    border: 1px solid #DADADA;
+}
+
+/* 구분선 */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: gray;
+    font-size: medium;
+    margin-bottom: 20px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+.divider span {
+    padding: 0 10px;
+}
+
+/* 로고 텍스트 애니메이션을 위한 CSS */
+#brand-logo-text {
+    /* 글자가 바뀔 때 0.4초 동안 부드럽게 사라지고 나타나도록 설정 */
+    transition: opacity 0.4s ease-in-out;
+}

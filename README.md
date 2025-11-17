@@ -132,3 +132,4 @@
 
 - "Travel Japan" 프로젝트는 인생에 있어 처음 해보는 프로젝트의며 나의 첫 번째 포트폴리오다.
 
+## join.html, login.html, menu.js, style.css, menu.css 수정했습니다.
