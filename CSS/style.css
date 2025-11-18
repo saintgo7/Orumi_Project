@@ -1017,6 +1017,243 @@ select:focus,
     font-size: 0.95em;
 }
 
+/* 예산 관리 섹션 */
+.budget-title legend {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: large;
+}
+
+.budget-input-container {
+    padding: 16px 0;
+}
+
+.budget-input-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 16px;
+    background: var(--background-light);
+    border-radius: 8px;
+}
+
+.budget-input-group label {
+    font-weight: bold;
+    min-width: 80px;
+}
+
+.budget-input-group input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: large;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+.budget-input-group input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.budget-input-group .currency {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.budget-breakdown {
+    margin-top: 16px;
+}
+
+.budget-breakdown-title {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 12px;
+}
+
+.budget-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.budget-category-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.budget-category-item label {
+    min-width: 90px;
+    font-weight: 500;
+}
+
+.budget-category-item i {
+    color: var(--accent-color);
+}
+
+.budget-category-item input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+.budget-category-item span {
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.budget-summary {
+    margin-top: 16px;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--background-light), var(--background-color));
+    border-radius: 8px;
+    text-align: center;
+}
+
+.budget-summary strong {
+    font-size: large;
+    color: var(--primary-color);
+}
+
+.budget-note {
+    margin-top: 12px;
+    font-size: medium;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* 항공권 및 숙소 예약 링크 */
+.booking-container {
+    margin-top: 30px;
+    padding: 24px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px var(--shadow-light);
+    border: 2px solid var(--border-color);
+}
+
+.booking-title {
+    color: var(--primary-color);
+    font-size: x-large;
+    font-weight: bold;
+    margin: 0 0 24px 0;
+    text-align: center;
+}
+
+.booking-title i {
+    color: var(--accent-color);
+    margin-right: 8px;
+}
+
+.booking-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.booking-section h4 {
+    color: var(--text-color);
+    font-size: large;
+    margin: 0 0 8px 0;
+}
+
+.booking-section h4 i {
+    color: var(--accent-color);
+    margin-right: 8px;
+}
+
+.booking-subtitle {
+    color: var(--text-light);
+    font-size: medium;
+    margin: 0 0 16px 0;
+}
+
+.booking-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.booking-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 12px;
+    background: linear-gradient(135deg, var(--background-light), #fff);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.booking-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+    border-color: var(--accent-color);
+}
+
+.booking-link i {
+    font-size: 2em;
+    color: var(--accent-color);
+}
+
+.booking-link span {
+    font-weight: bold;
+    font-size: medium;
+}
+
+.booking-link small {
+    font-size: small;
+    color: var(--text-light);
+}
+
+.booking-link.skyscanner i { color: #00B2E3; }
+.booking-link.google-flights i { color: #4285F4; }
+.booking-link.kayak i { color: #FF690F; }
+.booking-link.naver i { color: #03C75A; }
+.booking-link.booking-com i { color: #003580; }
+.booking-link.airbnb i { color: #FF5A5F; }
+.booking-link.agoda i { color: #D7372E; }
+.booking-link.hotels-com i { color: #D32F2F; }
+
+.booking-note {
+    padding: 16px;
+    background: var(--background-light);
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: var(--text-color);
+}
+
+.booking-note i {
+    color: var(--accent-color);
+    margin-top: 2px;
+}
+
+.booking-note p {
+    margin: 0;
+    font-size: medium;
+    line-height: 1.6;
+}
+
 /* Google Maps 지도 표시 */
 .map-container {
     margin-top: 30px;

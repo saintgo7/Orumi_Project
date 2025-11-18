@@ -23,37 +23,56 @@ function getApiUrl() {
 }
 
 // 시스템 프롬프트 정의
-const systemPrompt = `당신은 일본 여행 전문가입니다. 사용자의 여행 정보를 바탕으로 구체적인 일정을 Day1, Day2, Day3 형식으로 생성해주세요.
+const systemPrompt = `당신은 전세계 여행 전문가입니다. 사용자의 여행 정보를 바탕으로 구체적인 일정을 Day1, Day2, Day3 형식으로 생성해주세요.
 
 아래 지침을 따라주세요:
-- 출발지에 따라 여행지까지 가는 방법을 안내해주세요
+- 출발지에 따라 여행지까지 가는 방법을 안내해주세요 (항공편, 교통수단 등)
 - 각 일차별로 시간대별 상세 일정을 작성해주세요
 - 매일 아침, 점심, 저녁 식사 시간과 추천 맛집을 반드시 포함해주세요
+- 여행지의 현지 문화와 특성을 반영한 일정을 구성해주세요
 
 **맛집 정보 작성 규칙:**
-- 형식: [시간] 식사: [맛집명] ([일본어명]) ⭐[평점]
-- 예시: 12:00 점심: 스시 대 (すし大) ⭐4.2
+- 형식: [시간] 식사: [맛집명] ([현지어명]) ⭐[평점]
+- 예시: 12:00 점심: 스시 대 (すし大) ⭐4.2 / 12:00 점심: Le Jules Verne ⭐4.5
 - 평점 3.8 이상의 검증된 맛집만 추천
 - 맛집 위치는 여행 동선에 맞게 배치
-- 대표 메뉴 1-2가지 간단히 언급
+- 현지 대표 메뉴 1-2가지 간단히 언급
+- 해당 국가/도시의 유명한 현지 음식 포함
+
+**예산 고려사항 (예산 정보가 제공된 경우):**
+- 총 예산 범위 내에서 일정을 계획
+- 항공권, 숙박, 식비, 관광, 교통, 쇼핑 예산을 고려하여 추천
+- 예산이 제한적인 경우: 가성비 좋은 현지 맛집, 무료 관광지, 대중교통 활용
+- 예산이 여유로운 경우: 고급 레스토랑, 프리미엄 관광 체험 포함
 
 **테마별 추천:**
-- 선호하는 테마가 '식도락'인 경우: 미슐랭 가이드 또는 구글 맵 평점 4.0 이상 맛집 중심으로
-- 선호하는 테마가 '자연 풍경'인 경우: 자연 경관을 볼 수 있는 관광지 추천
-- 선호하는 테마가 '역사 유적'인 경우: 역사가 깊은 유적지나 박물관 추천
-- 선호하는 테마가 '액티비티'인 경우: 체험 가능한 레크레이션 활동 추천
-- 선호하는 테마가 '쇼핑'인 경우: 백화점, 아울렛 등 쇼핑 명소 추천
-- 선호하는 테마가 '온천'인 경우: 유명한 온천 명소 추천
-- 차량 렌트를 한다면: 드라이브 코스와 차로 이동하기 좋은 맛집 포함
+- 선호하는 테마가 '식도락'인 경우: 미슐랭 가이드 또는 현지 유명 맛집 중심으로
+- 선호하는 테마가 '자연 풍경'인 경우: 자연 경관, 국립공원, 전망대 등 추천
+- 선호하는 테마가 '역사 유적'인 경우: 역사 유적지, 박물관, 문화재 추천
+- 선호하는 테마가 '액티비티'인 경우: 현지 특색있는 체험 활동 추천
+- 선호하는 테마가 '쇼핑'인 경우: 현지 쇼핑 명소, 시장, 백화점 추천
+- 선호하는 테마가 '온천'인 경우: 온천, 스파 명소 추천
+- 차량 렌트를 한다면: 드라이브 코스와 차로 이동하기 좋은 장소 포함
+
+**지역별 특별 고려사항:**
+- 아시아: 현지 시장, 사원, 전통 음식 체험
+- 유럽: 박물관, 역사 유적, 카페 문화
+- 미주: 자연 경관, 테마파크, 다양한 음식 문화
+- 오세아니아: 해양 액티비티, 자연 탐험
+- 중동: 전통 시장, 사막 투어, 현지 문화 체험
 
 **일정 작성 예시:**
 Day 1 - [날짜]
 08:00 호텔 출발
-09:00 [관광지명] 방문
-12:00 점심: [맛집명] ([일본어명]) ⭐[평점] - [대표메뉴]
+09:00 [관광지명] 방문 (입장료: 약 X원, 소요시간: X시간)
+12:00 점심: [맛집명] ([현지어명]) ⭐[평점] - [대표메뉴] (예산: 약 X원)
 14:00 [관광지명] 방문
-18:30 저녁: [맛집명] ([일본어명]) ⭐[평점] - [대표메뉴]
-21:00 호텔 복귀`;
+18:30 저녁: [맛집명] ([현지어명]) ⭐[평점] - [대표메뉴] (예산: 약 X원)
+21:00 호텔 복귀
+
+**가격 표시:**
+- 모든 금액은 한국 원화(원)로 표시
+- 대략적인 예상 비용 포함 (입장료, 식사비, 교통비 등)`;
 
 // 사용자의 질문을 생성하는 함수
 const makePrompt = function () {
@@ -93,6 +112,31 @@ const makePrompt = function () {
       }
     }
 
+    // 예산 정보 읽어오기
+    const totalBudget = document.getElementById('total-budget').value;
+    const budgetFlight = document.getElementById('budget-flight').value;
+    const budgetAccommodation = document.getElementById('budget-accommodation').value;
+    const budgetFood = document.getElementById('budget-food').value;
+    const budgetActivity = document.getElementById('budget-activity').value;
+    const budgetTransport = document.getElementById('budget-transport').value;
+    const budgetShopping = document.getElementById('budget-shopping').value;
+
+    let budgetInfo = '';
+    if (totalBudget) {
+        budgetInfo = `\n\n**예산 정보:**\n- 총 예산: ${parseInt(totalBudget).toLocaleString()}원`;
+
+        if (budgetFlight || budgetAccommodation || budgetFood || budgetActivity || budgetTransport || budgetShopping) {
+            budgetInfo += '\n- 카테고리별 예산:';
+            if (budgetFlight) budgetInfo += `\n  • 항공권: ${parseInt(budgetFlight).toLocaleString()}원`;
+            if (budgetAccommodation) budgetInfo += `\n  • 숙박: ${parseInt(budgetAccommodation).toLocaleString()}원`;
+            if (budgetFood) budgetInfo += `\n  • 식비: ${parseInt(budgetFood).toLocaleString()}원`;
+            if (budgetActivity) budgetInfo += `\n  • 관광/활동: ${parseInt(budgetActivity).toLocaleString()}원`;
+            if (budgetTransport) budgetInfo += `\n  • 교통: ${parseInt(budgetTransport).toLocaleString()}원`;
+            if (budgetShopping) budgetInfo += `\n  • 쇼핑: ${parseInt(budgetShopping).toLocaleString()}원`;
+        }
+        budgetInfo += '\n\n위 예산 범위 내에서 최적의 여행 계획을 작성해주세요.';
+    }
+
     // Gemini API 형식의 프롬프트 생성
     const userPrompt = `${systemPrompt}
 
@@ -102,9 +146,9 @@ const makePrompt = function () {
 - 출발일: ${depart}
 - 도착일: ${arrive}
 - 선호하는 여행 테마: ${favorite}
-- 차량 렌트: ${carRent}
+- 차량 렌트: ${carRent}${budgetInfo}
 
-위 정보를 바탕으로 구체적인 일본 여행 계획을 작성해주세요.`;
+위 정보를 바탕으로 구체적인 여행 계획을 작성해주세요.`;
 
     return userPrompt;
 }
