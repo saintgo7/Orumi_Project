@@ -1,7 +1,16 @@
 :root {
-    --text-color: #6A7BA2;
-    --background-color: #FFD4D4;
-    --accent-color: #A0C3D2;
+    /* 일본 여행 테마 색상 */
+    --primary-color: #E63946;
+    --secondary-color: #FF6B9D;
+    --accent-color: #06B6D4;
+    --text-color: #2C3E50;
+    --text-light: #5A6C7D;
+    --background-light: #FFF8F0;
+    --background-color: #FFE5E5;
+    --card-bg: #FFFFFF;
+    --border-color: #FFD4D4;
+    --shadow-light: rgba(230, 57, 70, 0.1);
+    --shadow-medium: rgba(230, 57, 70, 0.15);
 }
 
 /* header */
@@ -16,13 +25,14 @@
     margin: 0;
     padding: 0;
     color: var(--text-color);
-    background-color: #ffffff;
-    border-bottom: 4px solid var(--background-color);
+    background: linear-gradient(to right, #ffffff, var(--background-light));
+    border-bottom: 3px solid var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-weight: bold;
-    padding: 6px 12px;
+    padding: 12px 24px;
+    box-shadow: 0 2px 8px var(--shadow-light);
 }
 
 .header h1{
@@ -51,9 +61,14 @@ a {
 }
 
 .menu li:hover{
-    background-color: var(--background-color);
-    border-radius: 4px;
-    opacity: 0.8;
+    background: linear-gradient(135deg, var(--background-color), var(--border-color));
+    border-radius: 8px;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+.menu a:hover {
+    color: var(--primary-color);
 }
 
 

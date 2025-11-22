@@ -6,9 +6,18 @@
 
 
 :root {
-    --text-color: #6A7BA2;
-    --background-color: #FFD4D4;
-    --accent-color: #A0C3D2;
+    /* 일본 여행 테마 색상 */
+    --primary-color: #E63946;        /* 일본 전통 붉은색 - 메인 포인트 */
+    --secondary-color: #FF6B9D;      /* 벚꽃 핑크 */
+    --accent-color: #06B6D4;         /* 스카이 블루 - 여행/하늘 */
+    --text-color: #2C3E50;           /* 진한 네이비 - 가독성 */
+    --text-light: #5A6C7D;           /* 밝은 텍스트 */
+    --background-light: #FFF8F0;     /* 크림 베이지 */
+    --background-color: #FFE5E5;     /* 연한 핑크 */
+    --card-bg: #FFFFFF;              /* 카드 배경 */
+    --border-color: #FFD4D4;         /* 테두리 */
+    --shadow-light: rgba(230, 57, 70, 0.1);
+    --shadow-medium: rgba(230, 57, 70, 0.15);
 }
 
 
@@ -20,9 +29,11 @@ html{
 body,
 fieldset,
 ul {
-    margin:0;
+    margin: 0;
     padding: 0;
     font-family: 'IBM Plex Sans KR', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-color);
 }
 
 
@@ -42,17 +53,23 @@ ul {
 }
 
 .subtitle > a:hover{
-    background-color: var(--background-color);
-    border-radius: 3px;
-    text-shadow: 0px 0px 20px #6A7BA2;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 8px;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
     color: #ffffff;
+    padding: 8px 16px;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
 }
 
 .subtitle > a{
     text-decoration: none;
     color: #ffffff;
     font-size: x-large;
-    
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* 로그인 페이지 */
@@ -69,7 +86,7 @@ ul {
 }
 
 .description{
-    color: gray;
+    color: var(--text-light);
     font-size: medium;
     margin: 20px 0;
 }
@@ -83,16 +100,30 @@ form > div {
     justify-content: center;
 }
 
-[type="text"] {
-    width:290px;
-    height:32px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+[type="text"],
+[type="password"] {
+    width: 290px;
+    height: 40px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
     margin-left: 10px;
+    padding: 8px 12px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-size: medium;
+    background: var(--card-bg);
+    transition: all 0.3s ease;
+}
+
+[type="text"]:focus,
+[type="password"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 2px 8px var(--shadow-light);
 }
 
 [type="text"]:read-only {
-    background-color : #ccc
+    background-color: #f0f0f0;
+    cursor: not-allowed;
 }
 
 .id,
@@ -107,18 +138,29 @@ form > div {
 /* 회원가입 페이지 */
 
 .title{
-    color: var(--text-color);
+    color: var(--primary-color);
     font-weight: bold;
-
+    font-size: xx-large;
 }
 
 .join{
     width: 510px;
     margin: 80px auto;
+    padding: 40px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px var(--shadow-light);
 }
 
 .join-form{
     font-size: large;
+}
+
+.login {
+    padding: 40px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px var(--shadow-light);
 }
 
 fieldset {
@@ -130,6 +172,26 @@ fieldset ul{
     list-style: none;
     display: flex;
     flex: wrap;
+    gap: 10px;
+}
+
+/* 체크박스와 라디오 버튼 스타일 개선 */
+input[type="checkbox"],
+input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+fieldset label {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+fieldset label:hover {
+    color: var(--primary-color);
 }
 
 .label-width{
@@ -167,17 +229,18 @@ legend{
     font-size: xx-large;
     padding-right: 10px;
     font-weight: bold;
-    color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 .popular-city-title {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 32px;
+    color: var(--text-color);
 }
 
 .popular-city-list p{
@@ -203,18 +266,27 @@ legend{
 
 .city-box{
     float: left;
-    width: 440px; 
+    width: 440px;
     margin-left: 20px;
     margin-right: 20px;
-    border-radius: 4px;
+    border-radius: 16px;
     text-align: center;
     overflow: hidden;
+    background: var(--card-bg);
+    box-shadow: 0 4px 12px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.city-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px var(--shadow-medium);
 }
 
 #city-title{
     font-family: 'Abril Fatface', cursive;
     font-size: x-large;
-    color: black;
+    color: var(--primary-color);
+    margin-top: 10px;
 }
 
 
@@ -235,9 +307,9 @@ legend{
 /* 여행 일정 순서 아이콘 크기 조절 */
 
 #arrow-icon{
-    font-size: large;
+    font-size: x-large;
     font-weight: bold;
-    color: var(--text-color);
+    color: var(--accent-color);
 }
 
 
@@ -246,40 +318,63 @@ legend{
 .order-title{
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.order-title:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px var(--shadow-medium);
 }
 
 .order-title .step{
-    color: var(--accent-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: bold;
-    font-size: 38px;
+    font-size: 42px;
 }
 
 .order-title p{
     font-size: large;
     text-align: center;
-    color: #636363;
+    color: var(--text-light);
 }
 
 /* 여행 일정 title */
 
 #chat-box{
-    background-color: var(--background-color);
+    background: linear-gradient(135deg, var(--background-color), var(--border-color));
     text-align: center;
     justify-content: center;
     font-size: xx-large;
     font-weight: bold;
-    color: black;
+    color: var(--text-color);
+    padding: 20px 0;
+    border-radius: 16px;
+    margin: 40px 20px;
+    box-shadow: 0 4px 12px var(--shadow-light);
 }
 
 #chat-box p{
     margin: 0px 0px 0px 0px;
-    line-height: 120%;
+    line-height: 140%;
     padding: 8px 0px;
 }
 
 
 #plane-icon{
-    color: var(--text-color);
+    color: var(--primary-color);
+    animation: plane-fly 2s ease-in-out infinite;
+}
+
+@keyframes plane-fly {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
 }
 
 /* user 여행 일정 입력, 답변 칸 */
@@ -302,8 +397,17 @@ select {
 select,
 [type="date"]{
     font-family: 'IBM Plex Sans KR', sans-serif;
-    border: 1px solid black;
-    border-radius: 4px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    transition: border-color 0.3s ease;
+}
+
+select:focus,
+[type="date"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 2px 8px var(--shadow-light);
 }
 
 
@@ -352,22 +456,30 @@ select,
 .chat-head{
     margin-bottom: 20px;
     text-align: center;
-    color: var(--text-color);
+    color: var(--primary-color);
     font-weight: bold;
+    font-size: x-large;
 }
 
 /* 일정 생성 답변 칸 스타일 */
 #chat-content {
     resize: none;
     border: 2px solid var(--accent-color);
-    border-radius: 4px;
+    border-radius: 12px;
     width: 500px;
     height: 330px;
     padding: 20px;
     font-size: large;
     font-family: 'IBM Plex Sans KR', sans-serif;
+    background: var(--card-bg);
+    box-shadow: 0 2px 8px var(--shadow-light);
+    transition: border-color 0.3s ease;
+}
 
-
+#chat-content:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 16px var(--shadow-medium);
 }
 
 .select{
@@ -445,6 +557,8 @@ select,
 
 .select legend{
     font-weight: bold;
+    color: var(--text-color);
+    font-size: large;
 }
 
 .tema-title,
@@ -465,20 +579,25 @@ select,
 /* 회원가입, 로그인 버튼 */
 .submit-button {
     width: 100%;
-    height: 40px;
+    height: 50px;
     font-size: x-large;
-    font-weight: 500px;
-    border-radius: 4px;
-    margin-top: 10px;
-    border-width: 0 0 3px 0;
-    box-sizing: content-box;
-    position: relative;
-    background-color: var(--text-color);
-    color: var(--background-color);
-    border: 1px solid rgb(30, 37, 65);
-    font-family: 'IBM Plex Sans KR', sans-serif;
     font-weight: bold;
+    border-radius: 12px;
+    margin-top: 10px;
+    border: none;
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #ffffff;
+    font-family: 'IBM Plex Sans KR', sans-serif;
     cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow-medium);
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+    background: linear-gradient(135deg, #D32F2F, #FF6B9D);
 }
 /* 일정생성 버튼, 초기화 버튼 나란히 정렬 */
 .button-edit{
@@ -495,32 +614,39 @@ select,
 /* 일정생성 버튼 */
 #button{
     width: 200px;
-    height: 40px;
-    font-size: x-large;
-    font-weight: 500px;
+    height: 50px;
+    font-size: large;
+    font-weight: bold;
     margin-top: 10px;
-    border-width: 0 0 3px 0;
-    box-sizing: content-box;
+    border: none;
     position: relative;
-    background-color: var(--text-color);
-    color: var(--background-color);
-    border-radius: 4px;
-    border: 1px solid rgb(30, 37, 65);
+    background: linear-gradient(135deg, var(--accent-color), #0EA5E9);
+    color: #ffffff;
+    border-radius: 12px;
     cursor: pointer;
     font-family: 'IBM Plex Sans KR', sans-serif;
-    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+    transition: all 0.3s ease;
 }
 
+#button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+    background: linear-gradient(135deg, #0EA5E9, #0284C7);
+}
 
 .submit-button:active,
 #button:active {
-    border: 0;
-    margin-top: 12px;
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px var(--shadow-light);
 }
 
-.submit-button:disabled
+.submit-button:disabled,
 #button:disabled {
-    background-color: #ccc;
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 /* 로딩 이미지 가운데 위치 */
@@ -537,21 +663,29 @@ select,
 
 /* footer */
 .footer {
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background: linear-gradient(135deg, var(--background-color), var(--border-color));
+    color: var(--text-light);
     align-items: center;
     justify-content: center;
     position: relative;
-    height: 100px;
+    height: 120px;
     display: flex;
     transform: translateY(0%);
     font-size: large;
+    margin-top: 60px;
+    box-shadow: 0 -4px 12px var(--shadow-light);
 }
 
 /* icon */
 
 #icon{
     color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+#icon:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
 }
 
 .icon{
@@ -570,18 +704,732 @@ select,
     width: 80px;
     height: 80px;
     color: #fff;
-    background-color: var(--text-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     position: fixed;
     bottom: 10%;
     right: 10%;
-    border: 2px solid #ffffff;
+    border: none;
     border-radius: 50%;
     font: bold 30px monospace;
-    transition: opacity 0.5s, transform 0.5s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px var(--shadow-medium);
+}
+
+#scroll-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 24px var(--shadow-medium);
 }
 
 #scroll-btn.show {
     opacity: 1;
-    transition: opacity 1s, transform 1s;
+    transition: opacity 0.5s, transform 0.3s;
 }
 
+
+/* Excel 내보내기 버튼 */
+.export-button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.export-button {
+    padding: 12px 24px;
+    font-size: large;
+    font-weight: bold;
+    background: linear-gradient(135deg, #217346, #2E7D5A);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    box-shadow: 0 4px 12px rgba(33, 115, 70, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.export-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(33, 115, 70, 0.4);
+    background: linear-gradient(135deg, #1B5E38, #217346);
+}
+
+.export-button:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(33, 115, 70, 0.3);
+}
+
+.export-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.export-button i {
+    font-size: 1.2em;
+}
+
+/* JSON Excel 버튼 */
+.json-excel-button {
+    background: linear-gradient(135deg, #1976D2, #2196F3);
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+}
+
+.json-excel-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1565C0, #1976D2);
+    box-shadow: 0 6px 20px rgba(25, 118, 210, 0.4);
+}
+
+.json-excel-button:active:not(:disabled) {
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+}
+
+/* JSON 다운로드 버튼 */
+.json-download-button {
+    background: linear-gradient(135deg, #7B1FA2, #9C27B0);
+    box-shadow: 0 4px 12px rgba(123, 31, 162, 0.3);
+}
+
+.json-download-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #6A1B9A, #7B1FA2);
+    box-shadow: 0 6px 20px rgba(123, 31, 162, 0.4);
+}
+
+.json-download-button:active:not(:disabled) {
+    box-shadow: 0 2px 8px rgba(123, 31, 162, 0.3);
+}
+
+/* API 키 설정 섹션 */
+.api-key-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px var(--shadow-light);
+    border: 2px solid var(--border-color);
+}
+
+.api-key-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.api-key-header h3 {
+    color: var(--primary-color);
+    font-size: large;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.toggle-button:hover {
+    transform: scale(1.1);
+}
+
+.api-key-section {
+    padding: 20px 10px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.api-key-status {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--background-light);
+    border-left: 4px solid var(--accent-color);
+}
+
+.api-key-status.status-success {
+    background: #E8F5E9;
+    border-left-color: #4CAF50;
+    color: #2E7D32;
+}
+
+.api-key-status.status-error {
+    background: #FFF3E0;
+    border-left-color: #FF9800;
+    color: #E65100;
+}
+
+.api-key-status code {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.api-key-input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.api-key-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: medium;
+    font-family: 'Courier New', monospace;
+    background: var(--card-bg);
+    transition: border-color 0.3s ease;
+}
+
+.api-key-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.visibility-button {
+    padding: 12px 16px;
+    background: var(--background-light);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.visibility-button:hover {
+    background: var(--background-color);
+    border-color: var(--accent-color);
+}
+
+.api-key-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.api-button {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: medium;
+    font-weight: bold;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.save-button {
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.save-button:hover {
+    background: linear-gradient(135deg, #388E3C, #4CAF50);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    transform: translateY(-2px);
+}
+
+.clear-button {
+    background: linear-gradient(135deg, #F44336, #EF5350);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+.clear-button:hover {
+    background: linear-gradient(135deg, #D32F2F, #F44336);
+    box-shadow: 0 6px 20px rgba(244, 67, 54, 0.4);
+    transform: translateY(-2px);
+}
+
+.api-key-help {
+    padding: 16px;
+    background: var(--background-light);
+    border-radius: 8px;
+    color: var(--text-color);
+}
+
+.api-key-help p {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.api-key-help ol {
+    margin: 12px 0;
+    padding-left: 24px;
+}
+
+.api-key-help li {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.api-key-help a {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.api-key-help a:hover {
+    color: var(--primary-color);
+}
+
+.api-security-note {
+    margin-top: 12px;
+    padding: 12px;
+    background: #E3F2FD;
+    border-left: 4px solid var(--accent-color);
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+
+/* 예산 관리 섹션 */
+.budget-title legend {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: large;
+}
+
+.budget-input-container {
+    padding: 16px 0;
+}
+
+.budget-input-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 16px;
+    background: var(--background-light);
+    border-radius: 8px;
+}
+
+.budget-input-group label {
+    font-weight: bold;
+    min-width: 80px;
+}
+
+.budget-input-group input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: large;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+.budget-input-group input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.budget-input-group .currency {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.budget-breakdown {
+    margin-top: 16px;
+}
+
+.budget-breakdown-title {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 12px;
+}
+
+.budget-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.budget-category-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.budget-category-item label {
+    min-width: 90px;
+    font-weight: 500;
+}
+
+.budget-category-item i {
+    color: var(--accent-color);
+}
+
+.budget-category-item input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+.budget-category-item span {
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.budget-summary {
+    margin-top: 16px;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--background-light), var(--background-color));
+    border-radius: 8px;
+    text-align: center;
+}
+
+.budget-summary strong {
+    font-size: large;
+    color: var(--primary-color);
+}
+
+.budget-note {
+    margin-top: 12px;
+    font-size: medium;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* 항공권 및 숙소 예약 링크 */
+.booking-container {
+    margin-top: 30px;
+    padding: 24px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px var(--shadow-light);
+    border: 2px solid var(--border-color);
+}
+
+.booking-title {
+    color: var(--primary-color);
+    font-size: x-large;
+    font-weight: bold;
+    margin: 0 0 24px 0;
+    text-align: center;
+}
+
+.booking-title i {
+    color: var(--accent-color);
+    margin-right: 8px;
+}
+
+.booking-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.booking-section h4 {
+    color: var(--text-color);
+    font-size: large;
+    margin: 0 0 8px 0;
+}
+
+.booking-section h4 i {
+    color: var(--accent-color);
+    margin-right: 8px;
+}
+
+.booking-subtitle {
+    color: var(--text-light);
+    font-size: medium;
+    margin: 0 0 16px 0;
+}
+
+.booking-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.booking-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 12px;
+    background: linear-gradient(135deg, var(--background-light), #fff);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.booking-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+    border-color: var(--accent-color);
+}
+
+.booking-link i {
+    font-size: 2em;
+    color: var(--accent-color);
+}
+
+.booking-link span {
+    font-weight: bold;
+    font-size: medium;
+}
+
+.booking-link small {
+    font-size: small;
+    color: var(--text-light);
+}
+
+.booking-link.skyscanner i { color: #00B2E3; }
+.booking-link.google-flights i { color: #4285F4; }
+.booking-link.kayak i { color: #FF690F; }
+.booking-link.naver i { color: #03C75A; }
+.booking-link.booking-com i { color: #003580; }
+.booking-link.airbnb i { color: #FF5A5F; }
+.booking-link.agoda i { color: #D7372E; }
+.booking-link.hotels-com i { color: #D32F2F; }
+
+.booking-note {
+    padding: 16px;
+    background: var(--background-light);
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: var(--text-color);
+}
+
+.booking-note i {
+    color: var(--accent-color);
+    margin-top: 2px;
+}
+
+.booking-note p {
+    margin: 0;
+    font-size: medium;
+    line-height: 1.6;
+}
+
+/* Google Maps 지도 표시 */
+.map-container {
+    margin-top: 30px;
+    padding: 24px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px var(--shadow-light);
+    border: 2px solid var(--border-color);
+}
+
+.map-title {
+    color: var(--primary-color);
+    font-size: x-large;
+    font-weight: bold;
+    margin: 0 0 16px 0;
+    text-align: center;
+}
+
+.map-title i {
+    color: var(--accent-color);
+    margin-right: 8px;
+}
+
+.travel-map {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.map-links {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--accent-color), #0EA5E9);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: medium;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(6, 182, 212, 0.3);
+}
+
+.map-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(6, 182, 212, 0.4);
+    background: linear-gradient(135deg, #0EA5E9, #0284C7);
+    color: #ffffff;
+}
+
+/* =========================================
+   소셜 로그인 스타일 추가
+   ========================================= */
+
+/* 소셜 로그인 전체 컨테이너 */
+.social-login-wrapper {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* "SNS 계정으로 간편 로그인" 텍스트 */
+.social-login-title {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* 버튼들을 감싸는 영역 */
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* 버튼 사이 간격 */
+}
+
+/* 공통 버튼 스타일 (동그라미 형태) */
+.social-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* 그림자 효과 */
+    transition: transform 0.2s ease;
+}
+
+/* 마우스 올렸을 때 살짝 위로 올라가는 효과 */
+.social-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* 구글 버튼 (흰색 배경 + 빨간 아이콘) */
+.google {
+    background-color: #ffffff;
+    color: #ea4335;
+    border: 1px solid #dddddd;
+}
+
+/* 카카오 버튼 (노란색 배경 + 갈색 아이콘) */
+.kakao {
+    background-color: #fee500;
+    color: #3c1e1e;
+    border: none;
+}
+
+/* 네이버 버튼 (초록색 배경 + 흰색 텍스트) */
+.naver {
+    background-color: #03c75a;
+    color: #ffffff;
+    border: none;
+}
+
+/* 네이버 'N' 텍스트 스타일 */
+.naver span {
+    font-weight: 900;
+    font-family: sans-serif;
+    font-size: 18px;
+}   
+/* =========================================
+   회원가입 페이지 전용 스타일
+   ========================================= */
+
+/* 구분선 스타일 (또는 이메일로 가입) */
+.signup-divider {
+    display: flex;
+    align-items: center;
+    color: #999;
+    font-size: 14px;
+    margin: 0 10px 30px 10px; /* 여백 조절 */
+}
+
+/* 구분선 양옆의 선 */
+.signup-divider::before,
+.signup-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #ddd;
+}
+
+/* 텍스트 양옆 간격 */
+.signup-divider span {
+    padding: 0 15px;
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+/* =========================================
+   로그인 페이지 레이아웃 수정
+   ========================================= */
+
+/* 라벨 글자 줄바꿈 방지 및 정렬 */
+.login label {
+    white-space: nowrap;  /* 글자가 좁아도 줄바꿈 되지 않게 설정 */
+    width: 80px;          /* 라벨 너비를 고정하여 아이디/비밀번호 줄 맞춤 */
+    text-align: left;     /* 텍스트 왼쪽 정렬 */
+}
+
+/* 입력창 너비 조절 */
+.login input[type="text"] {
+    width: 230px;         /* 기존 290px에서 줄여서 라벨 공간 확보 */
+}
+
+/* 기존에 아이디 부분에만 들어가 있던 불필요한 여백 제거 (선택 사항) */
+.id {
+    margin-left: 0 !important; /* 강제로 기존 여백(14px) 무시 */
+}
