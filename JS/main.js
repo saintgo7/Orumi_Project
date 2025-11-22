@@ -207,9 +207,38 @@ $form.addEventListener("submit", (e) => {
 // 화면에 답변 그려주는 함수
 const printAnswer = (answer) => {
     let chat_content = document.getElementById("chat-content");
-    chat_content.value = answer;
+    // 로딩 시작 함수
+    btnshow();
+    // marked 라이브러리를 사용해 마크다운을 HTML로 변환
+    chat_content.innerHTML = marked.parse(answer);
     // 로딩을 종료해주는 함수
     btnhide();
     // Excel 내보내기 버튼 활성화를 위해 change 이벤트 트리거
     chat_content.dispatchEvent(new Event('input'));
 };
+
+// 메인 슬라이드 자동 넘기기 기능
+document.addEventListener("DOMContentLoaded", function() {
+    // 슬라이드 라디오 버튼들을 모두 가져옵니다 (name="radio-btn")
+    const slides = document.querySelectorAll('input[name="radio-btn"]');
+    
+    // 10초(10000ms)마다 슬라이드를 넘깁니다
+    const intervalTime = 10000; 
+    
+    setInterval(function() {
+        // 현재 체크된 슬라이드 찾기
+        let activeIndex = 0;
+        for (let i = 0; i < slides.length; i++) {
+            if (slides[i].checked) {
+                activeIndex = i;
+                break;
+            }
+        }
+        
+        // 다음 슬라이드 체크 (마지막이면 처음으로 돌아감)
+        // % 연산자를 사용하여 순환하도록 함
+        const nextIndex = (activeIndex + 1) % slides.length;
+        slides[nextIndex].checked = true;
+        
+    }, intervalTime);
+});

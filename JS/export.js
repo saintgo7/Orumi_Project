@@ -2,7 +2,7 @@
 
 function exportToExcel() {
     // 여행 일정 내용 가져오기
-    const content = document.getElementById('chat-content').value;
+    const content = document.getElementById('chat-content').innerText;
 
     // 내용이 비어있는지 확인
     if (!content || content === '여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)') {
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
         chatContent.addEventListener('change', checkContent);
 
         function checkContent() {
-            const content = chatContent.value;
+            const content = chatContent.innerText;
             if (exportBtn) {
                 if (content && content !== '여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)') {
                     exportBtn.disabled = false;

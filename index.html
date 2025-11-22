@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/9e9931aed0.js" crossorigin="anonymous"></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="./CSS/media.css">
     <link rel="stylesheet" href="./CSS/menu.css">
@@ -12,6 +13,7 @@
     <!-- SheetJS for Excel export -->
     <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
     <title>Travel Planner - 세계 여행 플래너</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
@@ -139,12 +141,12 @@
                 <p>일본 도쿄</p>
             </div>
             <div class="city-box">
-                <img src="./Img/osaka.avif">
+                <img src="./Img/paris.jpeg">
                 <p id="city-title">Paris</p>
                 <p>프랑스 파리</p>
             </div>
             <div class="city-box">
-                <img src="./Img/hukuoka.jpeg">
+                <img src="./Img/newyork.jpeg">
                 <p id="city-title">New York</p>
                 <p>미국 뉴욕</p>
             </div>
@@ -540,12 +542,12 @@
             </div>
         </form>
         <!-- user 여행 일정 답변 칸 -->
-        <div class=chat-answer>
+        <div class="chat-answer">
             <div id="answer">
-                <textarea
-                name="content"
-                id="chat-content"
-                placeholder="여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)"></textarea>
+                <div id="chat-content" style="overflow-y: auto; text-align: left; background: #ffffff; border: 2px solid #A0C3D2; border-radius: 12px; padding: 20px; height: 330px;">
+                    여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)
+                </div>
+            </div>
             </div>
             <!-- Google Maps 지도 표시 -->
             <div id="map-container" class="map-container" style="display: none;">

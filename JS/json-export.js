@@ -2,7 +2,7 @@
 
 // 여행 일정을 JSON으로 파싱하는 함수
 function parseItineraryToJSON() {
-    const content = document.getElementById('chat-content').value;
+    const content = document.getElementById('chat-content').innerText;
 
     if (!content || content === '여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)') {
         return null;
@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
         chatContent.addEventListener('change', checkContent);
 
         function checkContent() {
-            const content = chatContent.value;
+            const content = chatContent.innerText;
             const hasContent = content && content !== '여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)';
 
             [jsonExcelBtn, jsonDownloadBtn].forEach(btn => {

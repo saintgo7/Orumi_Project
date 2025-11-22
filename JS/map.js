@@ -58,7 +58,7 @@ function displayTravelMap() {
 
 // 맛집 정보에서 링크 생성
 function createRestaurantLinks() {
-    const content = document.getElementById('chat-content').value;
+    const content = document.getElementById('chat-content').innerText;
 
     if (!content) return;
 
@@ -79,7 +79,7 @@ window.addEventListener('DOMContentLoaded', function() {
     if (chatContent) {
         // 답변 내용이 변경될 때마다 확인
         chatContent.addEventListener('input', function() {
-            const content = chatContent.value;
+            const content = chatContent.innerText;
 
             // 실제 답변이 있을 때만 지도 표시
             if (content && content !== '여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)') {

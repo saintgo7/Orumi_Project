@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (chatContent) {
         chatContent.addEventListener('input', function() {
             // 일정이 생성되면 예약 링크도 생성
-            if (this.value && this.value.length > 100) {
+            if (this.innerText && this.innerText.length > 100) {
                 generateBookingLinks();
             }
         });
