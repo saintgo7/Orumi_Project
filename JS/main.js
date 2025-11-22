@@ -19,7 +19,7 @@ function getApiUrl() {
     if (!apiKey) {
         return null;
     }
-    return `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`;
+    return `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 }
 
 // 시스템 프롬프트 정의

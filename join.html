@@ -36,6 +36,25 @@
             <h1 class="title">회원가입</h1>
             <h2 class="description">원활한 서비스 이용을 위해 회원가입을 해주세요</h2>
         </div>
+
+        <div class="social-login-wrapper" style="margin-top: 10px; margin-bottom: 20px;">
+            <div class="social-buttons">
+                <a href="#" class="social-btn google">
+                    <i class="fa-brands fa-google"></i>
+                </a>
+                <a href="#" class="social-btn kakao">
+                    <i class="fa-solid fa-comment"></i>
+                </a>
+                <a href="#" class="social-btn naver">
+                    <span>N</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="signup-divider">
+            <span>또는 이메일로 가입</span>
+        </div>
+        <form class="join-form">
         <!-- main -->
         <!-- 사용자 기본정보 -->
         <form class="join-form">
@@ -55,58 +74,7 @@
                 <label class="label-width" for="user-nickname">닉네임</label>
                 <input type="text" id="user-nickname" name="UserNickName">
             </div>
-            <!-- 사용자 성별 -->
-            <fieldset>
-                <legend>성별</legend>
-                <ul class="user-gender">
-                    <li>
-                    <input type="radio" id="male" name="gender">
-                    <label for="male">남성</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="female" name="gender">
-                        <label for="female">여성</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="choice" name="gender">
-                        <label for="choice">선택 안함</label>
-                    </li>
-                </ul>
-            </fieldset>
-            <!-- 사용자 선호하는 여행테마 -->
-            <fieldset>
-                <legend>선호하는 여행테마</legend>
-                <ul class="user-favoritetema">
-                    <li>
-                        <input type="checkbox" id="food-travel" name="FoodTravel">
-                        <label for="food-travel">식도락</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="nature-travel" name="NatureTravel">
-                        <label for="nature-travel">자연 풍경</label>
-                    </li>
-                    
-                    <li>
-                        <input type="checkbox" id="ruins-travel" names="Ruins">
-                        <label for="ruins-travel">역사 유적</label>
-                    </li>
-                    
-                    <li>
-                        <input type="checkbox" id="activity-travel" name="Activity">
-                        <label for="activity-travel">액티비티</label>
-                    </li>
-                    
-                    <li>
-                        <input type="checkbox" id="sake-travel" name="SakeTravel">
-                        <label for="shopping-travel">쇼핑</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="onsen-travel" name="OnsenTravel">
-                        <label for="onsen-travel">온천</label>
-                    </li>
-                </ul>
-            </fieldset>
-
+            
             <!-- 회원가입 버튼 -->
             <button class="submit-button" type="submit">회원가입</button>
         </div>
