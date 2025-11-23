@@ -92,15 +92,10 @@ const makePrompt = function () {
     let arriveInput = document.getElementById("arrive-schedule");
     let arrive = arriveInput.value;
 
-    // 선호하는 여행테마 값 읽어오기 (모든 체크된 항목)
-    let favoriteInputs = document.getElementsByName('tema');
-    let favorites = [];
-    for (let i = 0; i < favoriteInputs.length; i++){
-        if (favoriteInputs[i].checked) {
-            favorites.push(favoriteInputs[i].value);
-        }
-    }
-    let favorite = favorites.join(', ') || '일반 관광';
+    // 선호하는 여행테마 값 읽어오기 (텍스트 입력)
+    let favoriteInput = document.getElementById("theme-input");
+    // 입력값이 없으면 '일반 관광'을 기본값으로 사용
+    let favorite = favoriteInput.value.trim() || '일반 관광';
 
     // 차량 렌트 값 읽어오기
     let carRentInputs = document.getElementsByName("car-rent");
@@ -222,8 +217,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // 슬라이드 라디오 버튼들을 모두 가져옵니다 (name="radio-btn")
     const slides = document.querySelectorAll('input[name="radio-btn"]');
     
-    // 10초(10000ms)마다 슬라이드를 넘깁니다
-    const intervalTime = 10000; 
+    // 8초(8000ms)마다 슬라이드를 넘깁니다
+    const intervalTime = 8000; 
     
     setInterval(function() {
         // 현재 체크된 슬라이드 찾기
@@ -241,4 +236,32 @@ document.addEventListener("DOMContentLoaded", function() {
         slides[nextIndex].checked = true;
         
     }, intervalTime);
+});
+
+// [화면 전환 로직]
+document.addEventListener("DOMContentLoaded", function() {
+    const btnStart = document.getElementById("btn-start");       // '로그인 없이 시작' 버튼
+    const btnGoPlanner = document.getElementById("btn-go-planner"); // '계획 짜러 가기' 버튼
+    
+    const sectionLanding = document.getElementById("section-landing");
+    const sectionInfo = document.getElementById("section-info");
+    const sectionPlanner = document.getElementById("section-planner");
+
+    // 1. 시작 버튼 클릭 -> 랜딩 숨기고 정보 섹션 보여주기
+    if (btnStart) {
+        btnStart.addEventListener("click", function() {
+            sectionLanding.style.display = "none";
+            sectionInfo.style.display = "block";
+            window.scrollTo(0, 0);
+        });
+    }
+
+    // 2. 계획 짜기 버튼 클릭 -> 정보 섹션 숨기고 플래너 보여주기
+    if (btnGoPlanner) {
+        btnGoPlanner.addEventListener("click", function() {
+            sectionInfo.style.display = "none"; // 정보창 숨김 (계속 띄우려면 이 줄 삭제)
+            sectionPlanner.style.display = "block";
+            window.scrollTo(0, 0);
+        });
+    }
 });

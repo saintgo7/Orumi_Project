@@ -2,668 +2,509 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8" />
-    <!-- fontawesome -->
-    <script src="https://kit.fontawesome.com/9e9931aed0.js" crossorigin="anonymous"></script>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="./CSS/media.css">
-    <link rel="stylesheet" href="./CSS/menu.css">
-    <link rel="stylesheet" href="./CSS/slide.css">
-    <link rel="stylesheet" href="./CSS/style.css">
-    <!-- SheetJS for Excel export -->
-    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Planner - 세계 여행 플래너</title>
+    <script src="https://kit.fontawesome.com/9e9931aed0.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/slide.css">
+    <link rel="stylesheet" href="./CSS/menu.css">
+    <link rel="stylesheet" href="./CSS/media.css">
 </head>
 
 <body>
+<section id="section-landing">
+    <div class="landing-container">
+        
+        <div class="landing-text">
+            <h2 class="main-title">Travel<br>Planner</h2>
+            <p class="sub-text">AI와 함께 떠나는<br>나만의 맞춤 세계 여행</p>
+            
+            <div class="landing-buttons">
+                <a href="./login.html" class="btn-landing">로그인</a>
+                <a href="./join.html" class="btn-landing">회원가입</a>
+                <button id="btn-start" class="btn-landing highlight">로그인 없이 시작하기</button>
+            </div>
+        </div>
+
+        <div class="landing-image">
+            <ul class="slides">
+                <input type="radio" name="radio-btn" id="img-1" checked />
+                <li class="slide-container">
+                    <div class="slide">
+                        <img src="./Img/1.jpg"/>
+                        <span class="location-badge"><i class="fa-solid fa-location-dot"></i> 태국 (Bangkok)</span>
+                    </div>
+                </li>
+
+                <input type="radio" name="radio-btn" id="img-2" />
+                <li class="slide-container">
+                    <div class="slide">
+                        <img src="./Img/2.jpg"/>
+                        <span class="location-badge"><i class="fa-solid fa-location-dot"></i> 싱가포르 (Singapore)</span>
+                    </div>
+                </li>
+
+                <input type="radio" name="radio-btn" id="img-3" />
+                <li class="slide-container">
+                    <div class="slide">
+                        <img src="./Img/3.png"/>
+                        <span class="location-badge"><i class="fa-solid fa-location-dot"></i> 스위스 (Zürich)</span>
+                    </div>
+                </li>
+
+                <input type="radio" name="radio-btn" id="img-4" />
+                <li class="slide-container">
+                    <div class="slide">
+                        <img src="./Img/4.jpg"/>
+                        <span class="location-badge"><i class="fa-solid fa-location-dot"></i> 오스트리아 (Wien)</span>
+                    </div>
+                </li>
+
+                <input type="radio" name="radio-btn" id="img-5" />
+                <li class="slide-container">
+                    <div class="slide">
+                        <img src="./Img/5.jpeg"/>
+                        <span class="location-badge"><i class="fa-solid fa-location-dot"></i> 호주 (Sydney)</span>
+                    </div>
+                </li>
+
+                <input type="radio" name="radio-btn" id="img-6" />
+                <li class="slide-container">
+                    <div class="slide">
+                        <img src="./Img/6.jpg"/>
+                        <span class="location-badge"><i class="fa-solid fa-location-dot"></i> 캐나다 (City of Toronto)</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+    <section id="section-info" style="display: none;">
+        
         <header class="header">
             <h1>
                 <div class="header-click">
                     <i class="fa-solid fa-earth-americas"></i>
-                        <a href="https://kimyeoju.github.io/Orumi_Project/">Travel Planner</a>
+                    <a href="./index.html">Travel Planner</a>
                 </div>
             </h1>
-                <ul class="menu">
-                    <li><a href="#city-title">이용 방법</a></li>
-                    <li><a href="#chat-box">여행 계획</a></li>
-                    <li><a href="./join.html">회원가입</a></li>
-                    <li><a href="./login.html">로그인</a></li>
-                </ul>
-                <a href="#" class="header_toogleBtn">
-                    <i class="fas fa-bars"></i>
-                </a>
+            <ul class="menu">
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./join.html">회원가입</a></li>
+            </ul>
+            <a href="#" class="header_toogleBtn">
+                <i class="fas fa-bars"></i>
+            </a>
         </header>
+
+        <main class="wrap">
+            <div class="popular-city-title" style="margin-top: 50px;">
+                <i id="location-icon" class="fa-solid fa-location-dot"></i>
+                <h3>인기 여행지 TOP 3</h3>
+            </div>
+            <div class="popular-city-list">
+                <div class="city-box">
+                    <img src="./Img/tokyo.jpeg">
+                    <p id="city-title">Tokyo</p>
+                    <p>일본 도쿄</p>
+                </div>
+                <div class="city-box">
+                    <img src="./Img/paris.jpeg">
+                    <p id="city-title">Paris</p>
+                    <p>프랑스 파리</p>
+                </div>
+                <div class="city-box">
+                    <img src="./Img/newyork.jpeg">
+                    <p id="city-title">New York</p>
+                    <p>미국 뉴욕</p>
+                </div>
+            </div>
+
+            <div id="plan-order">
+                <div class="order-title"><p class="step">STEP 1</p><p>여행지 선택</p></div>
+                <i id="arrow-icon" class="fa-solid fa-angle-right"></i>
+                <div class="order-title"><p class="step">STEP 2</p><p>일정 선택</p></div>
+                <i id="arrow-icon" class="fa-solid fa-angle-right"></i>
+                <div class="order-title"><p class="step">STEP 3</p><p>테마 선택</p></div>
+                <i id="arrow-icon" class="fa-solid fa-angle-right"></i>
+                <div class="order-title"><p class="step">STEP 4</p><p>AI 생성</p></div>
+                <i id="arrow-icon" class="fa-solid fa-angle-right"></i>
+                <div class="order-title"><p class="step">STEP 5</p><p>일정 확인</p></div>
+            </div>
+
+            <div style="text-align: center; margin: 60px 0;">
+                <button id="btn-go-planner" class="submit-button" style="width: 250px;">
+                    내 여행 계획 짜러 가기
+                </button>
+            </div>
+        </main>
+    </section>
+
+<section id="section-planner" style="display: none;">
         
-        <!-- main -->
+        <header class="header">
+            <h1>
+                <div class="header-click">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <a href="./index.html">Travel Planner</a>
+                </div>
+            </h1>
+            <ul class="menu">
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./join.html">회원가입</a></li>
+            </ul>
+            <a href="#" class="header_toogleBtn">
+                <i class="fas fa-bars"></i>
+            </a>
+        </header>
+
         <main class="wrap">
             <div class="content-wrap">
-            <!-- 슬라이드 구현 -->
-            <ul class="slides">
-                <!-- 첫번째 슬라이드 -->
-                <input type="radio" name="radio-btn" id="img-1" checked />
-                <li class="slide-container">
-                <div class="slide">
-                    <img src="./Img/1.jpg"/>
-                </div>
-                <!-- dots -->
-                <div class="nav">
-                <label for="img-6" class="prev">&#x2039;</label>
-                <label for="img-2" class="next">&#x203a;</label>
-                </div>
-                </li>
-
-                <!-- 두번째 슬라이드 -->
-                <input type="radio" name="radio-btn" id="img-2" />
-                <li class="slide-container">
-                    <div class="slide">
-                        <img src="./Img/2.jpg" />
-                    </div>
-                <!-- dots -->
-                <div class="nav">
-                    <label for="img-1" class="prev">&#x2039;</label>
-                    <label for="img-3" class="next">&#x203a;</label>
-                </div>
-                </li>
-                <!-- 세번째 슬라이드 -->
-                <input type="radio" name="radio-btn" id="img-3" />
-                <li class="slide-container">
-                    <div class="slide">
-                        <img src="./Img/3.jpeg" />
-                    </div>
-                <!-- dots -->
-                <div class="nav">
-                    <label for="img-2" class="prev">&#x2039;</label>
-                    <label for="img-4" class="next">&#x203a;</label>
-                </div>
-                </li>
-                <!-- 네번째 슬라이드 -->
-                <input type="radio" name="radio-btn" id="img-4" />
-                <li class="slide-container">
-                    <div class="slide">
-                        <img src="./Img/4.jpg" />
-                    </div>
-                <!-- dots -->
-                <div class="nav">
-                    <label for="img-3" class="prev">&#x2039;</label>
-                    <label for="img-5" class="next">&#x203a;</label>
-                </div>
-                </li>
-                <!-- 다섯번째 슬라이드 -->
-                <input type="radio" name="radio-btn" id="img-5" />
-                <li class="slide-container">
-                    <div class="slide">
-                        <img src="./Img/5.jpg" />
-                    </div>
-                <!-- dots -->
-                <div class="nav">
-                    <label for="img-4" class="prev">&#x2039;</label>
-                    <label for="img-6" class="next">&#x203a;</label>
-                </div>
-                </li>
-                <!-- 여섯번째 슬라이드 -->
-                <input type="radio" name="radio-btn" id="img-6" />
-                <li class="slide-container">
-                    <div class="slide">
-                        <img src="./Img/6.jpeg" />
-                    </div>
-                <!-- dots -->
-                <div class="nav">
-                    <label for="img-5" class="prev">&#x2039;</label>
-                    <label for="img-1" class="next">&#x203a;</label>
-                </div>
-                </li>
-                <li class="nav-dots">
-                    <label for="img-1" class="nav-dot" id="img-dot-1"></label>
-                    <label for="img-2" class="nav-dot" id="img-dot-2"></label>
-                    <label for="img-3" class="nav-dot" id="img-dot-3"></label>
-                    <label for="img-4" class="nav-dot" id="img-dot-4"></label>
-                    <label for="img-5" class="nav-dot" id="img-dot-5"></label>
-                    <label for="img-6" class="nav-dot" id="img-dot-6"></label>
-                </li>
-            </ul>
-            <!-- 슬라이드 이미지 위에 텍스트 -->
-            <div class="subtitle">
-                <h2>전세계 여행 플래너 "Travel Planner"에 오신 것을 환영합니다</h2>
-                <a href="#chat-box">지금 바로 나만의 세계 여행 계획을 생성해보세요!</a>
-            </div>
-        </div>
-            
-        <!-- 여행 인기 도시 top3 -->
-        <div class="popular-city-title">
-            <i id="location-icon"class="fa-solid fa-location-dot"></i>
-            <h3>인기 여행지 TOP 3</h3>
-        </div>
-        <div class="popular-city-list">
-            <div class="city-box">
-                <img src="./Img/tokyo.jpeg">
-                <p id="city-title">Tokyo</p>
-                <p>일본 도쿄</p>
-            </div>
-            <div class="city-box">
-                <img src="./Img/paris.jpeg">
-                <p id="city-title">Paris</p>
-                <p>프랑스 파리</p>
-            </div>
-            <div class="city-box">
-                <img src="./Img/newyork.jpeg">
-                <p id="city-title">New York</p>
-                <p>미국 뉴욕</p>
-            </div>
-        </div>
-
-        <!-- 여행 일정 계획 순서 -->
-        <div id="plan-order">
-            <div class="order-title">
-                <p class="step">STEP 1</p>
-                <p>출발지 여행지 선택</p>
-            </div>
-            <i id="arrow-icon"class="fa-solid fa-angle-right"></i>
-            <div class="order-title">
-                <p class="step">STEP 2</p>
-                <p>일정 선택</p>
-            </div>
-            <i id="arrow-icon" class="fa-solid fa-angle-right"></i>
-            <div class="order-title">
-                <p class="step">STEP 3</p>
-                <p>여행 테마 선택</p>
-            </div>
-            <i id="arrow-icon" class="fa-solid fa-angle-right"></i>
-            <div class="order-title">
-                <p class="step">STEP 4</p>
-                <p>렌트 여부 선택</p>
-            </div>
-            <i id="arrow-icon"class="fa-solid fa-angle-right"></i>
-            <div class="order-title">
-                <p class="step">STEP 5</p>
-                <p>일정 생성</p>
-            </div>
-        </div>
-
-        <!-- 여행 일정 title -->
-        <div id="chat-box" >
-            <p>AI 기반 세계 여행 플래너</p>
-            <p>어떤 여행을 꿈꾸시나요?<i id="plane-icon"class="fa-solid fa-plane-departure"></i></p>
-        </div>
-
-        <!-- API 키 설정 -->
-        <div class="api-key-container">
-            <div class="api-key-header">
-                <h3><i class="fa-solid fa-key"></i> Google Gemini API 설정</h3>
-                <button type="button" id="toggle-api-section" class="toggle-button">
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
-            </div>
-            <div id="api-key-section" class="api-key-section" style="display: none;">
-                <div class="api-key-status" id="api-key-status">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <span id="api-status-text">API 키가 설정되지 않았습니다.</span>
-                </div>
-                <div class="api-key-input-group">
-                    <input
-                        type="password"
-                        id="api-key-input"
-                        placeholder="Google Gemini API 키를 입력하세요"
-                        class="api-key-input"
-                    />
-                    <button type="button" id="toggle-visibility" class="visibility-button">
-                        <i class="fa-solid fa-eye"></i>
-                    </button>
-                </div>
-                <div class="api-key-actions">
-                    <button type="button" id="save-api-key" class="api-button save-button">
-                        <i class="fa-solid fa-floppy-disk"></i> 저장
-                    </button>
-                    <button type="button" id="clear-api-key" class="api-button clear-button">
-                        <i class="fa-solid fa-trash"></i> 삭제
-                    </button>
-                </div>
-                <div class="api-key-help">
-                    <p><i class="fa-solid fa-circle-question"></i> API 키 발급 방법:</p>
-                    <ol>
-                        <li><a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>에 접속하세요</li>
-                        <li>"Get API Key" 또는 "API 키 만들기"를 클릭하세요</li>
-                        <li>생성된 API 키를 복사하여 위 입력란에 붙여넣으세요</li>
-                        <li>저장 버튼을 클릭하면 브라우저에 안전하게 저장됩니다</li>
-                    </ol>
-                    <p class="api-security-note">
-                        <i class="fa-solid fa-shield-halved"></i>
-                        API 키는 브라우저의 LocalStorage에 저장되며, 서버로 전송되지 않습니다.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- user 여행 일정 입력칸 -->
-            <div class="chat-container">
-                <form class="chat-form" action="post">
-                    <div class="user_input">
-                        <h2 class="chat-head">여행 일정을 입력해주세요</h2>
-                        <!-- 출발지, 여행지 -->
-                        <div class="location">
-                            <!-- 출발지 -->
-                            <div class="depart-airport">
-                                <p>출발지</p>
-                            <select id="start-point">
-                                <option value="" disabled selected>출발 도시 또는 공항선택</option>
-                                <option name="start-point" value="인천">인천</option>
-                                <option name="start-point" value="김포">김포</option>
-                                <option name="start-point" value="부산">부산</option>
-                                <option name="start-point" value="광주">광주</option>
-                                <option name="start-point" value="무안">무안</option>
-                                <option name="start-point" value="군산">군산</option>
-                                <option name="start-point" value="대구">대구</option>
-                                <option name="start-point "value="진주(사천)">진주(사천)</option>
-                                <option name="start-point "value="여수">여수</option>
-                                <option name="start-point "value="울산">울산</option>
-                                <option name="start-point "value="원주">원주</option>
-                                <option name="start-point "value="청주">청주</option>
-                                <option name="start-point "value="포항경주">포항경주</option>
-                                <option name="start-point "value="양양">양양</option>
-                                <option name="start-point "value="제주">제주</option>
-                            </select>
-                        </div>
-                        <!-- 여행지 -->
-                        <div class="arrive-airport">
-                            <p>여행지</p>
-                            <select id="destination">
-                                <option value="" disabled selected>여행지 선택</option>
-
-                                <!-- 아시아 -->
-                                <optgroup label="🇯🇵 일본">
-                                    <option value="도쿄">도쿄</option>
-                                    <option value="오사카">오사카</option>
-                                    <option value="교토">교토</option>
-                                    <option value="삿포로">삿포로</option>
-                                    <option value="후쿠오카">후쿠오카</option>
-                                    <option value="오키나와">오키나와</option>
-                                </optgroup>
-                                <optgroup label="🇹🇭 태국">
-                                    <option value="방콕">방콕</option>
-                                    <option value="푸켓">푸켓</option>
-                                    <option value="치앙마이">치앙마이</option>
-                                    <option value="파타야">파타야</option>
-                                </optgroup>
-                                <optgroup label="🇻🇳 베트남">
-                                    <option value="하노이">하노이</option>
-                                    <option value="호치민">호치민</option>
-                                    <option value="다낭">다낭</option>
-                                    <option value="나트랑">나트랑</option>
-                                </optgroup>
-                                <optgroup label="🇸🇬 싱가포르">
-                                    <option value="싱가포르">싱가포르</option>
-                                </optgroup>
-                                <optgroup label="🇲🇾 말레이시아">
-                                    <option value="쿠알라룸푸르">쿠알라룸푸르</option>
-                                    <option value="코타키나발루">코타키나발루</option>
-                                </optgroup>
-                                <optgroup label="🇵🇭 필리핀">
-                                    <option value="마닐라">마닐라</option>
-                                    <option value="세부">세부</option>
-                                    <option value="보라카이">보라카이</option>
-                                </optgroup>
-                                <optgroup label="🇮🇩 인도네시아">
-                                    <option value="발리">발리</option>
-                                    <option value="자카르타">자카르타</option>
-                                </optgroup>
-                                <optgroup label="🇨🇳 중국">
-                                    <option value="베이징">베이징</option>
-                                    <option value="상하이">상하이</option>
-                                    <option value="홍콩">홍콩</option>
-                                    <option value="마카오">마카오</option>
-                                </optgroup>
-                                <optgroup label="🇹🇼 대만">
-                                    <option value="타이베이">타이베이</option>
-                                    <option value="가오슝">가오슝</option>
-                                </optgroup>
-
-                                <!-- 유럽 -->
-                                <optgroup label="🇫🇷 프랑스">
-                                    <option value="파리">파리</option>
-                                    <option value="니스">니스</option>
-                                    <option value="리옹">리옹</option>
-                                </optgroup>
-                                <optgroup label="🇮🇹 이탈리아">
-                                    <option value="로마">로마</option>
-                                    <option value="베니스">베니스</option>
-                                    <option value="피렌체">피렌체</option>
-                                    <option value="밀라노">밀라노</option>
-                                </optgroup>
-                                <optgroup label="🇪🇸 스페인">
-                                    <option value="바르셀로나">바르셀로나</option>
-                                    <option value="마드리드">마드리드</option>
-                                </optgroup>
-                                <optgroup label="🇬🇧 영국">
-                                    <option value="런던">런던</option>
-                                    <option value="에든버러">에든버러</option>
-                                </optgroup>
-                                <optgroup label="🇩🇪 독일">
-                                    <option value="베를린">베를린</option>
-                                    <option value="뮌헨">뮌헨</option>
-                                    <option value="프랑크푸르트">프랑크푸르트</option>
-                                </optgroup>
-                                <optgroup label="🇨🇭 스위스">
-                                    <option value="취리히">취리히</option>
-                                    <option value="제네바">제네바</option>
-                                </optgroup>
-                                <optgroup label="🇦🇹 오스트리아">
-                                    <option value="빈">빈</option>
-                                    <option value="잘츠부르크">잘츠부르크</option>
-                                </optgroup>
-
-                                <!-- 미주 -->
-                                <optgroup label="🇺🇸 미국">
-                                    <option value="뉴욕">뉴욕</option>
-                                    <option value="로스앤젤레스">로스앤젤레스</option>
-                                    <option value="샌프란시스코">샌프란시스코</option>
-                                    <option value="라스베이거스">라스베이거스</option>
-                                    <option value="시애틀">시애틀</option>
-                                    <option value="하와이">하와이</option>
-                                </optgroup>
-                                <optgroup label="🇨🇦 캐나다">
-                                    <option value="밴쿠버">밴쿠버</option>
-                                    <option value="토론토">토론토</option>
-                                    <option value="몬트리올">몬트리올</option>
-                                </optgroup>
-
-                                <!-- 오세아니아 -->
-                                <optgroup label="🇦🇺 호주">
-                                    <option value="시드니">시드니</option>
-                                    <option value="멜버른">멜버른</option>
-                                    <option value="골드코스트">골드코스트</option>
-                                </optgroup>
-                                <optgroup label="🇳🇿 뉴질랜드">
-                                    <option value="오클랜드">오클랜드</option>
-                                    <option value="퀸스타운">퀸스타운</option>
-                                </optgroup>
-
-                                <!-- 중동 -->
-                                <optgroup label="🇦🇪 아랍에미리트">
-                                    <option value="두바이">두바이</option>
-                                    <option value="아부다비">아부다비</option>
-                                </optgroup>
-                                <optgroup label="🇹🇷 터키">
-                                    <option value="이스탄불">이스탄불</option>
-                                    <option value="카파도키아">카파도키아</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                </div>
-                <!-- 출발일, 도착일 -->
-                <div class="travel-date">
-                    <!-- 출발일 -->
-                    <div class="depart">
-                        <p>출발일</p>
-                        <input id="depart-schedule" type="date" name="depart">
-                    </div>
-                    <!-- 도착일 -->
-                    <div class="arrive">
-                        <p>도착일</p>
-                        <input id="arrive-schedule" type="date" name="arrive">
-                    </div>
-                </div>
-            <!-- 선호하는 여행테마 -->
-            <div>
-                <fieldset class="select">
-                    <div class="tema-title">
-                        <legend>선호하는 여행테마를 선택해주세요</legend>
-                    </div>
-                <ul class="user-tema">
-                <li>
-                    <input type="checkbox" id="favorite-food" name="tema" value="food">
-                            <label for="favorite-food">식도락</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="favorite-landscape" name="tema"value="landscape">
-                    <label for="favorite-landscape">자연 풍경</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="favorite-history" name="tema" value="history">
-                    <label for="favorite-history">역사 유적</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="favorite-activity" name="tema" value="activity">
-                    <label for="favorite-activity">액티비티</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="favorite-shopping" name="tema" value="shopping">
-                    <label for="favorite-shopping">쇼핑</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="favorite-spa" name="tema" value="spa">
-                    <label for="favorite-spa">온천</label>
-                </li>
-                </ul>
-                </fieldset>
-            </div>
-                <!-- 차량 렌트 여부 -->
-                <div>
-                    <fieldset class="select">
-                        <div class="rent-title">
-                            <legend>차량 렌트 하시나요?</legend>
-                        </div>
-                        <ul class="user-rent">
-                            <li>
-                            <input type="radio" id="car-yes" name="car-rent" value="yes">
-                            <label for="car-yes">예</label>
-                            </li>
-                            <li>
-                                <input type="radio" id="car-no" name="car-rent" value="no">
-                                <label for="car-no">아니오</label>
-                            </li>
-                        </ul>
-                    </fieldset>
+                <div id="chat-box">
+                    <p>AI 기반 세계 여행 플래너</p>
+                    <p>어떤 여행을 꿈꾸시나요?<i id="plane-icon" class="fa-solid fa-plane-departure"></i></p>
                 </div>
 
-                <!-- 예산 설정 -->
-                <div>
-                    <fieldset class="select">
-                        <div class="budget-title">
-                            <legend><i class="fa-solid fa-wallet"></i> 예산 설정 (선택사항)</legend>
-                        </div>
-                        <div class="budget-input-container">
-                            <div class="budget-input-group">
-                                <label for="total-budget">총 예산:</label>
-                                <input type="number" id="total-budget" name="total-budget" placeholder="예: 2000000" min="0" step="10000">
-                                <span class="currency">원</span>
-                            </div>
-                            <div class="budget-breakdown">
-                                <p class="budget-breakdown-title">예산 카테고리별 가이드:</p>
-                                <div class="budget-categories">
-                                    <div class="budget-category-item">
-                                        <label for="budget-flight">
-                                            <i class="fa-solid fa-plane"></i> 항공권:
-                                        </label>
-                                        <input type="number" id="budget-flight" placeholder="예: 600000" min="0">
-                                        <span>원</span>
-                                    </div>
-                                    <div class="budget-category-item">
-                                        <label for="budget-accommodation">
-                                            <i class="fa-solid fa-hotel"></i> 숙박:
-                                        </label>
-                                        <input type="number" id="budget-accommodation" placeholder="예: 500000" min="0">
-                                        <span>원</span>
-                                    </div>
-                                    <div class="budget-category-item">
-                                        <label for="budget-food">
-                                            <i class="fa-solid fa-utensils"></i> 식비:
-                                        </label>
-                                        <input type="number" id="budget-food" placeholder="예: 400000" min="0">
-                                        <span>원</span>
-                                    </div>
-                                    <div class="budget-category-item">
-                                        <label for="budget-activity">
-                                            <i class="fa-solid fa-ticket"></i> 관광/활동:
-                                        </label>
-                                        <input type="number" id="budget-activity" placeholder="예: 300000" min="0">
-                                        <span>원</span>
-                                    </div>
-                                    <div class="budget-category-item">
-                                        <label for="budget-transport">
-                                            <i class="fa-solid fa-car"></i> 교통:
-                                        </label>
-                                        <input type="number" id="budget-transport" placeholder="예: 150000" min="0">
-                                        <span>원</span>
-                                    </div>
-                                    <div class="budget-category-item">
-                                        <label for="budget-shopping">
-                                            <i class="fa-solid fa-shopping-bag"></i> 쇼핑:
-                                        </label>
-                                        <input type="number" id="budget-shopping" placeholder="예: 200000" min="0">
-                                        <span>원</span>
-                                    </div>
-                                </div>
-                                <div class="budget-summary">
-                                    <strong>카테고리 합계: <span id="category-total">0</span>원</strong>
-                                    <p class="budget-note">
-                                        <i class="fa-solid fa-circle-info"></i>
-                                        예산 정보를 입력하면 AI가 예산에 맞는 일정을 추천합니다.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-                <!-- 일정생성 버튼, 초기화 버튼 생성 -->
-                <div class="button-edit">
-                    <!-- 일정생성 버튼 -->
-                    <div class="create-travel">
-                        <button class="submit-button" type="submit" id="button" onclick="btnshow()">일정 생성</button>
-                        <div id="loading-gif" style="display: none;">
-                            <img src="./Img/spin.gif" alt="로딩이미지">
-                        </div>
-                    </div>
-                    <!-- 리셋버튼 -->
-                    <div class="reset-travel">
-                        <button id="button" type="reset" onclick="reset()">초기화
+                <div class="api-key-container">
+                    <div class="api-key-header">
+                        <h3><i class="fa-solid fa-key"></i> Google Gemini API 설정</h3>
+                        <button type="button" id="toggle-api-section" class="toggle-button">
+                            <i class="fa-solid fa-chevron-down"></i>
                         </button>
-                </div>
-                </div>
-            </div>
-        </form>
-        <!-- user 여행 일정 답변 칸 -->
-        <div class="chat-answer">
-            <div id="answer">
-                <div id="chat-content" style="overflow-y: auto; text-align: left; background: #ffffff; border: 2px solid #A0C3D2; border-radius: 12px; padding: 20px; height: 330px;">
-                    여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)
-                </div>
-            </div>
-            </div>
-            <!-- Google Maps 지도 표시 -->
-            <div id="map-container" class="map-container" style="display: none;">
-                <h3 class="map-title">
-                    <i class="fa-solid fa-map-location-dot"></i> 여행지 지도
-                </h3>
-                <div id="travel-map" class="travel-map">
-                    <!-- 지도가 여기에 표시됩니다 -->
-                </div>
-                <div class="map-links">
-                    <a id="google-maps-link" href="#" target="_blank" class="map-link">
-                        <i class="fa-brands fa-google"></i> 구글 맵에서 크게 보기
-                    </a>
-                </div>
-            </div>
-
-            <!-- 항공권 및 숙소 예약 링크 -->
-            <div id="booking-container" class="booking-container" style="display: none;">
-                <h3 class="booking-title">
-                    <i class="fa-solid fa-ticket"></i> 항공권 & 숙소 예약
-                </h3>
-
-                <div class="booking-sections">
-                    <!-- 항공권 예약 -->
-                    <div class="booking-section">
-                        <h4><i class="fa-solid fa-plane-departure"></i> 항공권 예약</h4>
-                        <p class="booking-subtitle">여러 사이트를 비교하여 최저가를 찾아보세요!</p>
-                        <div class="booking-links">
-                            <a href="#" id="skyscanner-link" class="booking-link skyscanner" target="_blank">
-                                <i class="fa-solid fa-plane"></i>
-                                <span>Skyscanner</span>
-                                <small>가격 비교</small>
-                            </a>
-                            <a href="#" id="google-flights-link" class="booking-link google-flights" target="_blank">
-                                <i class="fa-brands fa-google"></i>
-                                <span>Google Flights</span>
-                                <small>실시간 검색</small>
-                            </a>
-                            <a href="#" id="kayak-link" class="booking-link kayak" target="_blank">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                                <span>Kayak</span>
-                                <small>통합 검색</small>
-                            </a>
-                            <a href="https://www.naver.com/air" class="booking-link naver" target="_blank">
-                                <i class="fa-solid fa-n"></i>
-                                <span>네이버 항공권</span>
-                                <small>국내 최저가</small>
-                            </a>
-                        </div>
                     </div>
-
-                    <!-- 숙소 예약 -->
-                    <div class="booking-section">
-                        <h4><i class="fa-solid fa-hotel"></i> 숙소 예약</h4>
-                        <p class="booking-subtitle">예산에 맞는 완벽한 숙소를 찾아보세요!</p>
-                        <div class="booking-links">
-                            <a href="#" id="booking-com-link" class="booking-link booking-com" target="_blank">
-                                <i class="fa-solid fa-bed"></i>
-                                <span>Booking.com</span>
-                                <small>호텔/게스트하우스</small>
-                            </a>
-                            <a href="#" id="airbnb-link" class="booking-link airbnb" target="_blank">
-                                <i class="fa-brands fa-airbnb"></i>
-                                <span>Airbnb</span>
-                                <small>현지 숙소</small>
-                            </a>
-                            <a href="#" id="agoda-link" class="booking-link agoda" target="_blank">
-                                <i class="fa-solid fa-building"></i>
-                                <span>Agoda</span>
-                                <small>아시아 특화</small>
-                            </a>
-                            <a href="#" id="hotels-com-link" class="booking-link hotels-com" target="_blank">
-                                <i class="fa-solid fa-hotel"></i>
-                                <span>Hotels.com</span>
-                                <small>10박 1박 무료</small>
-                            </a>
+                    <div id="api-key-section" class="api-key-section" style="display: none;">
+                        <div class="api-key-status" id="api-key-status">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span id="api-status-text">API 키가 설정되지 않았습니다.</span>
+                        </div>
+                        <div class="api-key-input-group">
+                            <input type="password" id="api-key-input" placeholder="Google Gemini API 키를 입력하세요" class="api-key-input"/>
+                            <button type="button" id="toggle-visibility" class="visibility-button"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                        <div class="api-key-actions">
+                            <button type="button" id="save-api-key" class="api-button save-button"><i class="fa-solid fa-floppy-disk"></i> 저장</button>
+                            <button type="button" id="clear-api-key" class="api-button clear-button"><i class="fa-solid fa-trash"></i> 삭제</button>
+                        </div>
+                        <div class="api-key-help">
+                            <p><i class="fa-solid fa-circle-question"></i> API 키 발급 방법:</p>
+                            <ol>
+                                <li><a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>에 접속하세요</li>
+                                <li>"Get API Key" 또는 "API 키 만들기"를 클릭하세요</li>
+                                <li>생성된 API 키를 복사하여 위 입력란에 붙여넣으세요</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
 
-                <div class="booking-note">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <p>여행 일정에 맞춰 자동으로 검색 링크가 생성됩니다. 클릭하시면 해당 사이트에서 바로 예약하실 수 있습니다.</p>
+                <div class="chat-container">
+                    <form class="chat-form" action="post">
+                        <div class="user_input">
+                            <h2 class="chat-head">여행 일정을 입력해주세요</h2>
+                            
+                            <div class="location">
+                                <div class="depart-airport">
+                                    <p>출발지</p>
+                                    <select id="start-point">
+                                        <option value="" disabled selected>출발 도시 또는 공항선택</option>
+                                        <option name="start-point" value="인천">인천</option>
+                                        <option name="start-point" value="김포">김포</option>
+                                        <option name="start-point" value="부산">부산</option>
+                                        <option name="start-point" value="광주">광주</option>
+                                        <option name="start-point" value="무안">무안</option>
+                                        <option name="start-point" value="군산">군산</option>
+                                        <option name="start-point" value="대구">대구</option>
+                                        <option name="start-point" value="진주(사천)">진주(사천)</option>
+                                        <option name="start-point" value="여수">여수</option>
+                                        <option name="start-point" value="울산">울산</option>
+                                        <option name="start-point" value="원주">원주</option>
+                                        <option name="start-point" value="청주">청주</option>
+                                        <option name="start-point" value="포항경주">포항경주</option>
+                                        <option name="start-point" value="양양">양양</option>
+                                        <option name="start-point" value="제주">제주</option>
+                                    </select>
+                                </div>
+                                <div class="arrive-airport">
+                                    <p>여행지</p>
+                                    <select id="destination">
+                                        <option value="" disabled selected>여행지 선택</option>
+                                        <optgroup label="🇯🇵 일본">
+                                            <option value="도쿄">도쿄</option>
+                                            <option value="오사카">오사카</option>
+                                            <option value="교토">교토</option>
+                                            <option value="삿포로">삿포로</option>
+                                            <option value="후쿠오카">후쿠오카</option>
+                                            <option value="오키나와">오키나와</option>
+                                        </optgroup>
+                                        <optgroup label="🇹🇭 태국">
+                                            <option value="방콕">방콕</option>
+                                            <option value="푸켓">푸켓</option>
+                                            <option value="치앙마이">치앙마이</option>
+                                            <option value="파타야">파타야</option>
+                                        </optgroup>
+                                        <optgroup label="🇻🇳 베트남">
+                                            <option value="하노이">하노이</option>
+                                            <option value="호치민">호치민</option>
+                                            <option value="다낭">다낭</option>
+                                            <option value="나트랑">나트랑</option>
+                                        </optgroup>
+                                        <optgroup label="🇸🇬 싱가포르">
+                                            <option value="싱가포르">싱가포르</option>
+                                        </optgroup>
+                                        <optgroup label="🇲🇾 말레이시아">
+                                            <option value="쿠알라룸푸르">쿠알라룸푸르</option>
+                                            <option value="코타키나발루">코타키나발루</option>
+                                        </optgroup>
+                                        <optgroup label="🇵🇭 필리핀">
+                                            <option value="마닐라">마닐라</option>
+                                            <option value="세부">세부</option>
+                                            <option value="보라카이">보라카이</option>
+                                        </optgroup>
+                                        <optgroup label="🇮🇩 인도네시아">
+                                            <option value="발리">발리</option>
+                                            <option value="자카르타">자카르타</option>
+                                        </optgroup>
+                                        <optgroup label="🇨🇳 중국">
+                                            <option value="베이징">베이징</option>
+                                            <option value="상하이">상하이</option>
+                                            <option value="홍콩">홍콩</option>
+                                            <option value="마카오">마카오</option>
+                                        </optgroup>
+                                        <optgroup label="🇹🇼 대만">
+                                            <option value="타이베이">타이베이</option>
+                                            <option value="가오슝">가오슝</option>
+                                        </optgroup>
+                                        <optgroup label="🇫🇷 프랑스">
+                                            <option value="파리">파리</option>
+                                            <option value="니스">니스</option>
+                                            <option value="리옹">리옹</option>
+                                        </optgroup>
+                                        <optgroup label="🇮🇹 이탈리아">
+                                            <option value="로마">로마</option>
+                                            <option value="베니스">베니스</option>
+                                            <option value="피렌체">피렌체</option>
+                                            <option value="밀라노">밀라노</option>
+                                        </optgroup>
+                                        <optgroup label="🇪🇸 스페인">
+                                            <option value="바르셀로나">바르셀로나</option>
+                                            <option value="마드리드">마드리드</option>
+                                        </optgroup>
+                                        <optgroup label="🇬🇧 영국">
+                                            <option value="런던">런던</option>
+                                            <option value="에든버러">에든버러</option>
+                                        </optgroup>
+                                        <optgroup label="🇩🇪 독일">
+                                            <option value="베를린">베를린</option>
+                                            <option value="뮌헨">뮌헨</option>
+                                            <option value="프랑크푸르트">프랑크푸르트</option>
+                                        </optgroup>
+                                        <optgroup label="🇨🇭 스위스">
+                                            <option value="취리히">취리히</option>
+                                            <option value="제네바">제네바</option>
+                                        </optgroup>
+                                        <optgroup label="🇦🇹 오스트리아">
+                                            <option value="빈">빈</option>
+                                            <option value="잘츠부르크">잘츠부르크</option>
+                                        </optgroup>
+                                        <optgroup label="🇺🇸 미국">
+                                            <option value="뉴욕">뉴욕</option>
+                                            <option value="로스앤젤레스">로스앤젤레스</option>
+                                            <option value="샌프란시스코">샌프란시스코</option>
+                                            <option value="라스베이거스">라스베이거스</option>
+                                            <option value="시애틀">시애틀</option>
+                                            <option value="하와이">하와이</option>
+                                        </optgroup>
+                                        <optgroup label="🇨🇦 캐나다">
+                                            <option value="밴쿠버">밴쿠버</option>
+                                            <option value="토론토">토론토</option>
+                                            <option value="몬트리올">몬트리올</option>
+                                        </optgroup>
+                                        <optgroup label="🇦🇺 호주">
+                                            <option value="시드니">시드니</option>
+                                            <option value="멜버른">멜버른</option>
+                                            <option value="골드코스트">골드코스트</option>
+                                        </optgroup>
+                                        <optgroup label="🇳🇿 뉴질랜드">
+                                            <option value="오클랜드">오클랜드</option>
+                                            <option value="퀸스타운">퀸스타운</option>
+                                        </optgroup>
+                                        <optgroup label="🇦🇪 아랍에미리트">
+                                            <option value="두바이">두바이</option>
+                                            <option value="아부다비">아부다비</option>
+                                        </optgroup>
+                                        <optgroup label="🇹🇷 터키">
+                                            <option value="이스탄불">이스탄불</option>
+                                            <option value="카파도키아">카파도키아</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="travel-date">
+                                <div class="depart">
+                                    <p>출발일</p>
+                                    <input id="depart-schedule" type="date" name="depart">
+                                </div>
+                                <div class="arrive">
+                                    <p>도착일</p>
+                                    <input id="arrive-schedule" type="date" name="arrive">
+                                </div>
+                            </div>
+
+                            <div>
+                                <fieldset class="select">
+                                     <div class="tema-title">
+                                        <legend>선호하는 여행 테마 (자유롭게 작성해주세요)</legend>
+                            </div>
+                            <div class="theme-input-wrapper" style="margin: 10px 45px;">
+                                <input 
+                                    type="text" 
+                                    id="theme-input" 
+                                    placeholder="예: 지브리 애니메이션 성지 순례, 현지인만 가는 노포 맛집, 조용한 힐링 여행"
+                                    style="width: 100%; padding: 12px; border: 2px solid #FFD4D4; border-radius: 8px; font-size: 1rem; font-family: 'IBM Plex Sans KR', sans-serif;"
+                                >
+                            </div>
+                                </fieldset>
+                            </div>
+
+                            <div>
+                                <fieldset class="select">
+                                    <div class="rent-title">
+                                        <legend>차량 렌트 하시나요?</legend>
+                                    </div>
+                                    <ul class="user-rent">
+                                        <li><input type="radio" id="car-yes" name="car-rent" value="yes"><label for="car-yes">예</label></li>
+                                        <li><input type="radio" id="car-no" name="car-rent" value="no"><label for="car-no">아니오</label></li>
+                                    </ul>
+                                </fieldset>
+                            </div>
+
+                            <div>
+                                <fieldset class="select">
+                                    <div class="budget-title">
+                                        <legend><i class="fa-solid fa-wallet"></i> 예산 설정 (선택사항)</legend>
+                                    </div>
+                                    <div class="budget-input-container">
+                                        <div class="budget-input-group">
+                                            <label for="total-budget">총 예산:</label>
+                                            <input type="number" id="total-budget" name="total-budget" placeholder="예: 2000000" min="0" step="10000">
+                                            <span class="currency">원</span>
+                                        </div>
+                                        <div class="budget-breakdown">
+                                            <p class="budget-breakdown-title">예산 카테고리별 가이드:</p>
+                                            <div class="budget-categories">
+                                                <div class="budget-category-item">
+                                                    <label for="budget-flight"><i class="fa-solid fa-plane"></i> 항공권:</label>
+                                                    <input type="number" id="budget-flight" placeholder="예: 600000" min="0"><span>원</span>
+                                                </div>
+                                                <div class="budget-category-item">
+                                                    <label for="budget-accommodation"><i class="fa-solid fa-hotel"></i> 숙박:</label>
+                                                    <input type="number" id="budget-accommodation" placeholder="예: 500000" min="0"><span>원</span>
+                                                </div>
+                                                <div class="budget-category-item">
+                                                    <label for="budget-food"><i class="fa-solid fa-utensils"></i> 식비:</label>
+                                                    <input type="number" id="budget-food" placeholder="예: 400000" min="0"><span>원</span>
+                                                </div>
+                                                <div class="budget-category-item">
+                                                    <label for="budget-activity"><i class="fa-solid fa-ticket"></i> 관광/활동:</label>
+                                                    <input type="number" id="budget-activity" placeholder="예: 300000" min="0"><span>원</span>
+                                                </div>
+                                                <div class="budget-category-item">
+                                                    <label for="budget-transport"><i class="fa-solid fa-car"></i> 교통:</label>
+                                                    <input type="number" id="budget-transport" placeholder="예: 150000" min="0"><span>원</span>
+                                                </div>
+                                                <div class="budget-category-item">
+                                                    <label for="budget-shopping"><i class="fa-solid fa-shopping-bag"></i> 쇼핑:</label>
+                                                    <input type="number" id="budget-shopping" placeholder="예: 200000" min="0"><span>원</span>
+                                                </div>
+                                            </div>
+                                            <div class="budget-summary">
+                                                <strong>카테고리 합계: <span id="category-total">0</span>원</strong>
+                                                <p class="budget-note"><i class="fa-solid fa-circle-info"></i> 예산 정보를 입력하면 AI가 예산에 맞는 일정을 추천합니다.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="button-edit">
+                                <div class="create-travel">
+                                    <button class="submit-button" type="submit" id="button" onclick="btnshow()">일정 생성</button>
+                                    <div id="loading-gif" style="display: none;">
+                                        <img src="./Img/spin.gif" alt="로딩이미지">
+                                    </div>
+                                </div>
+                                <div class="reset-travel">
+                                    <button id="button" type="reset" onclick="reset()">초기화</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="chat-answer">
+                    <div id="answer">
+                        <div id="chat-content" style="overflow-y: auto; text-align: left; height: 330px; padding: 20px; background: #ffffff; border: 2px solid #06B6D4; border-radius: 12px;">
+                            여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)
+                        </div>
+                    </div>
+                    
+                    <div id="map-container" class="map-container" style="display: none;">
+                        <h3 class="map-title"><i class="fa-solid fa-map-location-dot"></i> 여행지 지도</h3>
+                        <div id="travel-map" class="travel-map"></div>
+                        <div class="map-links">
+                            <a id="google-maps-link" href="#" target="_blank" class="map-link"><i class="fa-brands fa-google"></i> 구글 맵에서 크게 보기</a>
+                        </div>
+                    </div>
+
+                    <div id="booking-container" class="booking-container" style="display: none;">
+                        <h3 class="booking-title"><i class="fa-solid fa-ticket"></i> 항공권 & 숙소 예약</h3>
+                        <div class="booking-sections">
+                            <div class="booking-section">
+                                <h4><i class="fa-solid fa-plane-departure"></i> 항공권 예약</h4>
+                                <div class="booking-links">
+                                    <a href="#" id="skyscanner-link" class="booking-link skyscanner" target="_blank"><i class="fa-solid fa-plane"></i><span>Skyscanner</span></a>
+                                    <a href="#" id="google-flights-link" class="booking-link google-flights" target="_blank"><i class="fa-brands fa-google"></i><span>Google Flights</span></a>
+                                </div>
+                            </div>
+                            <div class="booking-section">
+                                <h4><i class="fa-solid fa-hotel"></i> 숙소 예약</h4>
+                                <div class="booking-links">
+                                    <a href="#" id="booking-com-link" class="booking-link booking-com" target="_blank"><i class="fa-solid fa-bed"></i><span>Booking.com</span></a>
+                                    <a href="#" id="airbnb-link" class="booking-link airbnb" target="_blank"><i class="fa-brands fa-airbnb"></i><span>Airbnb</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="export-button-container">
+                        <button id="export-excel-btn" class="export-button" onclick="exportToExcel()">
+                            <i class="fa-solid fa-file-excel"></i> Excel로 내보내기
+                        </button>
+                        <button id="json-excel-btn" class="export-button json-excel-button" onclick="exportJSONToExcel()">
+                            <i class="fa-solid fa-table"></i> JSON Excel로 내보내기
+                        </button>
+                        <button id="json-download-btn" class="export-button json-download-button" onclick="downloadJSON()">
+                            <i class="fa-solid fa-code"></i> JSON 다운로드
+                        </button>
+                    </div>
                 </div>
             </div>
-            <!-- Excel 내보내기 버튼 -->
-            <div class="export-button-container">
-                <button id="export-excel-btn" class="export-button" onclick="exportToExcel()">
-                    <i class="fa-solid fa-file-excel"></i> Excel로 내보내기
-                </button>
-                <button id="json-excel-btn" class="export-button json-excel-button" onclick="exportJSONToExcel()">
-                    <i class="fa-solid fa-table"></i> JSON Excel로 내보내기
-                </button>
-                <button id="json-download-btn" class="export-button json-download-button" onclick="downloadJSON()">
-                    <i class="fa-solid fa-code"></i> JSON 다운로드
-                </button>
-            </div>
-        </div>
-    </div>
-</main>
-<!-- main -->
+        </main>
 
-    <!-- footer -->
-    <footer class="footer">
-        <div>
-            <div class="icon">
-                <a href="https://github.com/kimyeoju"><i id="icon"class="fa-brands fa-github"></i></a>
-                <a href="https://www.instagram.com/yeoju_uj/"><i id="icon"class="fa-brands fa-instagram"></i></a>
-                <a href="https://m.blog.naver.com/d_d0031?fbclid=PAAaaebyCsm_LHxDJRsaHPkBV37CbW8DErKLOhvhiKhOE8rvDjmURfPpoY19k_aem_th_AYRZifwGLHEk9tZ-Te2Zh-GCO6n2ySLsvv8wOPgJtJxTlTBhPdT0BPMWKik6sbAZ8g0" ><i id="icon" class="fa-solid fa-blog"></i></a>
+        <footer class="footer">
+            <div>
+                <div class="icon">
+                    <a href="https://github.com/kimyeoju"><i id="icon" class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/yeoju_uj/"><i id="icon" class="fa-brands fa-instagram"></i></a>
+                    <a href="https://m.blog.naver.com/"><i id="icon" class="fa-solid fa-blog"></i></a>
+                </div>
             </div>
-            Copyright 2023. Travel Japan All rights reserved
-        </div>
-    </footer>
-    <!-- footer -->
+        </footer>
+    </section>
 
-    <!-- javascript 연동 -->
     <script src="./JS/data.js"></script>
     <script src="./JS/api-key-manager.js"></script>
     <script src="./JS/loader.js"></script>
@@ -675,5 +516,6 @@
     <script src="./JS/booking.js"></script>
     <script src="./JS/export.js"></script>
     <script src="./JS/json-export.js"></script>
-</body>
+
+    </body>
 </html>

@@ -1464,3 +1464,219 @@ select:focus,
     color: var(--text-color);
     background: linear-gradient(to top, var(--background-color) 50%, transparent 50%);
 }
+
+/* 랜딩 페이지 버튼 스타일 */
+.landing-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-landing {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    color: white;
+    border: 2px solid white;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.3s;
+    background: rgba(0,0,0,0.3);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-landing:hover {
+    background: white;
+    color: #333;
+}
+
+.btn-landing.highlight {
+    background: #E63946; /* 포인트 컬러 */
+    border-color: #E63946;
+}
+
+.btn-landing.highlight:hover {
+    background: #d32f2f;
+    color: white;
+}
+
+/* 섹션 간 이동 시 부드러운 스크롤 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* [1] 큰 박스 설정: 양옆으로 나란히 배치하라 (flex) */
+.landing-container {
+    display: flex;             /* 중요! 자식들을 옆으로 나란히 세움 */
+    align-items: center;       /* 위아래 가운데 정렬 */
+    justify-content: space-between; /* 양쪽 끝으로 벌림 */
+    width: 90%;                /* 전체 너비의 90%만 사용 */
+    margin: 0 auto;            /* 화면 가운데 위치 */
+    height: 100vh;             /* 높이는 화면 꽉 차게 */
+}
+
+/* [2] 왼쪽 방 (텍스트) 꾸미기 */
+.landing-text {
+    width: 45%;                /* 왼쪽 절반 조금 안 되게 */
+    animation: slideInLeft 1s; /* 왼쪽에서 스르륵 나오는 애니메이션 */
+    z-index: 10;               /* 그림보다 위에 글씨가 보이게 */
+}
+
+.landing-text h2 {
+    font-size: 5rem;           /* 제목 엄청 크게 */
+    font-family: 'Abril Fatface', cursive; /* 예쁜 폰트 */
+    color: #E63946;            /* 빨간색 포인트 */
+    line-height: 1.1;          /* 줄 간격 좁게 */
+    margin-bottom: 20px;
+}
+
+.landing-text p {
+    font-size: 1.5rem;         /* 설명글 적당히 크게 */
+    margin-bottom: 40px;
+    color: #333;
+}
+
+/* [3] 오른쪽 방 (폴라로이드 스타일로 변경) */
+.landing-image {
+    width: 45%;                /* 너비 설정 */
+    height: 600px;             /* 전체 높이 */
+    
+    /* 폴라로이드 핵심 스타일 */
+    background-color: #ffffff; /* 사진 인화지 색상 (흰색) */
+    padding: 15px 15px 80px 15px; /* 위/양옆은 좁게(15px), 아래는 넓게(80px) 설정 */
+    box-shadow: 5px 10px 20px rgba(0,0,0,0.2); /* 붕 떠있는 듯한 그림자 */
+    transform: rotate(-3deg);  /* 왼쪽으로 살짝 기울이기 (감성 포인트!) */
+    border-radius: 4px;        /* 모서리는 아주 살짝만 둥글게 */
+    
+    /* 내부 이미지 정렬 */
+    box-sizing: border-box;    /* 테두리 포함 크기 계산 */
+    position: relative;        /* 배지 위치 기준점 */
+    transition: transform 0.3s; /* 마우스 올렸을 때 효과용 */
+}
+
+/* 마우스 올리면 사진이 똑바로 서는 효과 (선택사항) */
+.landing-image:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow: 10px 15px 30px rgba(0,0,0,0.3);
+    z-index: 20;
+}
+
+/* 기존 슬라이드 스타일 강제 수정 */
+.slides {
+    width: 100% !important;    
+    height: 100% !important;
+    background: #333;        /* 사진 로딩 전 배경색 */
+    overflow: hidden;        /* 이미지가 폴라로이드 밖으로 나가지 않게 */
+    border: 1px solid #eee;  /* 사진과 종이 사이 얇은 경계선 */
+}
+
+.slide img {
+    height: 100% !important;   
+    width: 100% !important;
+    object-fit: cover;         
+}
+
+/* 위치 배지 위치 조정 (폴라로이드 안쪽으로) */
+.location-badge {
+    position: absolute;
+    bottom: 15px;             /* 사진 하단에서 15px 위 */
+    right: 15px;              /* 오른쪽에서 15px 안쪽 */
+    
+    /* 기존 스타일 유지... */
+    background-color: rgba(255, 255, 255, 0.9); /* 흰색 배경으로 변경해서 깔끔하게 */
+    color: #333;              /* 글자색 진하게 */
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+.location-badge i {
+    color: #E63946;
+}
+
+/* [4] 버튼 예쁘게 만들기 */
+.landing-buttons {
+    display: flex;
+    gap: 15px;                 /* 버튼 사이 간격 */
+}
+
+.btn-landing {
+    padding: 15px 30px;
+    border: 2px solid #333;
+    border-radius: 50px;       /* 캡슐 모양 */
+    background: transparent;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+    transition: 0.3s;          /* 마우스 올렸을 때 부드럽게 */
+}
+
+.btn-landing:hover {
+    background: #333;
+    color: white;
+}
+
+.btn-landing.highlight {       /* '시작하기' 버튼만 특별하게 */
+    background: #E63946;
+    border-color: #E63946;
+    color: white;
+}
+
+/* [5] 애니메이션 정의 (스르륵 움직임) */
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-100px); } /* 투명하고 왼쪽 100px에서 시작 */
+    to { opacity: 1; transform: translateX(0); }        /* 다 보이고 제자리로 */
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(100px); }  /* 투명하고 오른쪽 100px에서 시작 */
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* 사진 위 위치 정보 배지 스타일 */
+.location-badge {
+    position: absolute;       /* 사진 기준으로 위치 잡기 */
+    bottom: 30px;             /* 아래에서 30px 떨어짐 */
+    right: 30px;              /* 오른쪽에서 30px 떨어짐 */
+    
+    background-color: rgba(0, 0, 0, 0.6); /* 반투명 검은 배경 */
+    color: white;             /* 글자색 */
+    padding: 10px 20px;       /* 안쪽 여백 */
+    border-radius: 30px;      /* 둥근 모서리 */
+    
+    font-size: 1rem;          /* 글자 크기 */
+    font-weight: bold;        /* 굵게 */
+    backdrop-filter: blur(5px); /* 배경을 흐릿하게 (유리 효과) */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* 그림자 */
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;                 /* 아이콘과 글자 사이 간격 */
+    z-index: 10;              /* 사진보다 위에 오도록 */
+    
+    /* 애니메이션: 살짝 떠오르는 효과 */
+    animation: fadeInBadge 1s ease-out;
+}
+
+.location-badge i {
+    color: #E63946; /* 위치 아이콘 빨간색 포인트 */
+}
+
+@keyframes fadeInBadge {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 모바일에서는 조금 작게 */
+@media (max-width: 768px) {
+    .location-badge {
+        bottom: 15px;
+        right: 15px;
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+}
