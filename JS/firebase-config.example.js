@@ -1,14 +1,15 @@
-// Firebase Configuration
-// Firebase 콘솔(https://console.firebase.google.com/)에서 프로젝트 설정을 확인하여 아래 값을 채워주세요.
+// Firebase Configuration Example
+// 이 파일을 복사하여 'firebase-config.js'로 저장하고 실제 Firebase 설정값을 입력하세요.
+// Firebase 콘솔(https://console.firebase.google.com/)에서 프로젝트 설정을 확인하세요.
 // 프로젝트 설정 > 일반 > "내 앱" 섹션에서 Firebase SDK snippet을 확인할 수 있습니다.
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY", // Firebase 콘솔에서 확인
+  apiKey: "YOUR_API_KEY", // Firebase 콘솔에서 확인 (예: AIzaSyAbc123...)
   authDomain: "travel-8d33b.firebaseapp.com",
   projectId: "travel-8d33b",
   storageBucket: "travel-8d33b.firebasestorage.app",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID", // Firebase 콘솔에서 확인
-  appId: "YOUR_APP_ID" // Firebase 콘솔에서 확인
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID", // Firebase 콘솔에서 확인 (예: 123456789012)
+  appId: "YOUR_APP_ID" // Firebase 콘솔에서 확인 (예: 1:123456789012:web:abc123...)
 };
 
 // Firebase 초기화

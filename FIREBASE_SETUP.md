@@ -32,10 +32,20 @@ const firebaseConfig = {
 
 ## 2. 프로젝트에 Firebase 설정 적용
 
-### JS/firebase-config.js 파일 수정
+### 설정 파일 생성
 
-1. `JS/firebase-config.js` 파일을 엽니다.
-2. Firebase 콘솔에서 복사한 값으로 아래 항목들을 교체합니다:
+**중요: 보안을 위해 실제 API 키는 Git에 커밋되지 않습니다.**
+
+1. `JS/firebase-config.example.js` 파일을 복사하여 `JS/firebase-config.js`로 저장합니다:
+   ```bash
+   # 터미널에서 실행 (Mac/Linux)
+   cp JS/firebase-config.example.js JS/firebase-config.js
+
+   # Windows에서는
+   copy JS\firebase-config.example.js JS\firebase-config.js
+   ```
+
+2. 생성된 `JS/firebase-config.js` 파일을 열고 Firebase 콘솔에서 복사한 값으로 아래 항목들을 교체합니다:
 
 ```javascript
 const firebaseConfig = {
@@ -51,6 +61,8 @@ const firebaseConfig = {
 **주의:**
 - `apiKey`, `messagingSenderId`, `appId` 값만 변경하면 됩니다.
 - 나머지 값(`authDomain`, `projectId`, `storageBucket`)은 이미 올바르게 설정되어 있습니다.
+- `firebase-config.js` 파일은 `.gitignore`에 포함되어 있어 Git에 커밋되지 않습니다.
+- **절대로 `firebase-config.js` 파일을 Git에 추가하지 마세요!**
 
 ## 3. Firestore 데이터베이스 활성화
 
@@ -142,6 +154,8 @@ users (컬렉션)
 3. **API 키 보호**
    - Firebase API 키는 클라이언트에 노출되어도 괜찮지만
    - Firestore 보안 규칙으로 데이터 접근을 제어해야 합니다.
+   - `firebase-config.js` 파일은 `.gitignore`에 포함되어 Git 저장소에 업로드되지 않습니다.
+   - 팀원과 협업 시, `firebase-config.example.js`를 복사하여 각자 설정 파일을 만들어야 합니다.
 
 ## 문제 해결
 
