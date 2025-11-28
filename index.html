@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="./CSS/menu.css">
     <link rel="stylesheet" href="./CSS/slide.css">
     <link rel="stylesheet" href="./CSS/style.css">
-    <title>Travel Japan</title>
-<!-- SheetJS 라이브러리 추가 -->
-<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <!-- SheetJS for Excel export -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <title>Travel Planner - 세계 여행 플래너</title>
 </head>
 
 <body>
         <header class="header">
             <h1>
                 <div class="header-click">
-                    <i class="fa-solid fa-globe"></i>
-                        <a href="https://kimyeoju.github.io/Orumi_Project/">Travel Japan</a>
+                    <i class="fa-solid fa-earth-americas"></i>
+                        <a href="https://kimyeoju.github.io/Orumi_Project/">Travel Planner</a>
                 </div>
             </h1>
                 <ul class="menu">
@@ -120,67 +120,35 @@
                     <label for="img-6" class="nav-dot" id="img-dot-6"></label>
                 </li>
             </ul>
-                            
             <!-- 슬라이드 이미지 위에 텍스트 -->
             <div class="subtitle">
-                <h2>여행의 모든 것 "트래블 재팬"에 오신 것을 환영합니다</h2>
-                <a href="#chat-box">지금 바로 나만의 여행을 생성해보세요 !</a>
+                <h2>전세계 여행 플래너 "Travel Planner"에 오신 것을 환영합니다</h2>
+                <a href="#chat-box">지금 바로 나만의 세계 여행 계획을 생성해보세요!</a>
             </div>
         </div>
             
         <!-- 여행 인기 도시 top3 -->
-        <style>
-            .popular-city-title {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-        }
-    
-            .popular-city-list {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 60px; 
-                margin-top: 16px;
-        }
-    
-            .city-box {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-        }
-    </style>
-    
-    <div class="popular-city-title">
-        <i id="location-icon" class="fa-solid fa-location-dot"></i>
-        <h3>일본 여행 인기 도시 TOP 3</h3>
-      </div>
-      
-      <div class="popular-city-list">
-        <div class="city-box">
-          <img src="./Img/tokyo.jpeg" alt="Tokyo">
-          <p id="city-title">Tokyo</p>
-          <p>도쿄</p>
-          <p class="city-desc">최신과 전통이 공존하는 도시, 걸을 때마다 새로운 영감을 주는 감각의 수도.</p>
+        <div class="popular-city-title">
+            <i id="location-icon"class="fa-solid fa-location-dot"></i>
+            <h3>인기 여행지 TOP 3</h3>
         </div>
-        
-        <div class="city-box">
-          <img src="./Img/osaka.avif" alt="Osaka">
-          <p id="city-title">Osaka</p>
-          <p>오사카</p>
-          <p class="city-desc">웃음과 먹거리로 가득 찬 따뜻한 도시, 한 번 가면 또 가고 싶어지는 여행지.</p>
+        <div class="popular-city-list">
+            <div class="city-box">
+                <img src="./Img/tokyo.jpeg">
+                <p id="city-title">Tokyo</p>
+                <p>일본 도쿄</p>
+            </div>
+            <div class="city-box">
+                <img src="./Img/osaka.avif">
+                <p id="city-title">Paris</p>
+                <p>프랑스 파리</p>
+            </div>
+            <div class="city-box">
+                <img src="./Img/hukuoka.jpeg">
+                <p id="city-title">New York</p>
+                <p>미국 뉴욕</p>
+            </div>
         </div>
-        
-        <div class="city-box">
-          <img src="./Img/hukuoka.jpeg" alt="Hukuoka">
-          <p id="city-title">Hukuoka</p>
-          <p>후쿠오카</p>
-          <p class="city-desc">여유로운 바다와 도시의 활력이 절묘하게 섞인, 소박하지만 매력 넘치는 곳.</p>
-        </div>
-      </div>
-      
-    
 
         <!-- 여행 일정 계획 순서 -->
         <div id="plan-order">
@@ -212,8 +180,56 @@
 
         <!-- 여행 일정 title -->
         <div id="chat-box" >
-            <p>나만의 여행 플래너 트래블 재팬</p>
+            <p>AI 기반 세계 여행 플래너</p>
             <p>어떤 여행을 꿈꾸시나요?<i id="plane-icon"class="fa-solid fa-plane-departure"></i></p>
+        </div>
+
+        <!-- API 키 설정 -->
+        <div class="api-key-container">
+            <div class="api-key-header">
+                <h3><i class="fa-solid fa-key"></i> Google Gemini API 설정</h3>
+                <button type="button" id="toggle-api-section" class="toggle-button">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+            <div id="api-key-section" class="api-key-section" style="display: none;">
+                <div class="api-key-status" id="api-key-status">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span id="api-status-text">API 키가 설정되지 않았습니다.</span>
+                </div>
+                <div class="api-key-input-group">
+                    <input
+                        type="password"
+                        id="api-key-input"
+                        placeholder="Google Gemini API 키를 입력하세요"
+                        class="api-key-input"
+                    />
+                    <button type="button" id="toggle-visibility" class="visibility-button">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+                <div class="api-key-actions">
+                    <button type="button" id="save-api-key" class="api-button save-button">
+                        <i class="fa-solid fa-floppy-disk"></i> 저장
+                    </button>
+                    <button type="button" id="clear-api-key" class="api-button clear-button">
+                        <i class="fa-solid fa-trash"></i> 삭제
+                    </button>
+                </div>
+                <div class="api-key-help">
+                    <p><i class="fa-solid fa-circle-question"></i> API 키 발급 방법:</p>
+                    <ol>
+                        <li><a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>에 접속하세요</li>
+                        <li>"Get API Key" 또는 "API 키 만들기"를 클릭하세요</li>
+                        <li>생성된 API 키를 복사하여 위 입력란에 붙여넣으세요</li>
+                        <li>저장 버튼을 클릭하면 브라우저에 안전하게 저장됩니다</li>
+                    </ol>
+                    <p class="api-security-note">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        API 키는 브라우저의 LocalStorage에 저장되며, 서버로 전송되지 않습니다.
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!-- user 여행 일정 입력칸 -->
@@ -250,33 +266,123 @@
                             <p>여행지</p>
                             <select id="destination">
                                 <option value="" disabled selected>여행지 선택</option>
-                                <optgroup label="홋카이도">
-                                    <option name="destination" value="삿포로">삿포로</option>
+
+                                <!-- 아시아 -->
+                                <optgroup label="🇯🇵 일본">
+                                    <option value="도쿄">도쿄</option>
+                                    <option value="오사카">오사카</option>
+                                    <option value="교토">교토</option>
+                                    <option value="삿포로">삿포로</option>
+                                    <option value="후쿠오카">후쿠오카</option>
+                                    <option value="오키나와">오키나와</option>
                                 </optgroup>
-                                <optgroup label="도호쿠">
-                                    <option name="destination" value="센다이">센다이</option>
+                                <optgroup label="🇹🇭 태국">
+                                    <option value="방콕">방콕</option>
+                                    <option value="푸켓">푸켓</option>
+                                    <option value="치앙마이">치앙마이</option>
+                                    <option value="파타야">파타야</option>
                                 </optgroup>
-                                <optgroup label="간토">
-                                    <option name="destination" value="도쿄">도쿄</option>
+                                <optgroup label="🇻🇳 베트남">
+                                    <option value="하노이">하노이</option>
+                                    <option value="호치민">호치민</option>
+                                    <option value="다낭">다낭</option>
+                                    <option value="나트랑">나트랑</option>
                                 </optgroup>
-                                <optgroup label="주부">
-                                    <option name="destination" value="나고야">나고야</option>
+                                <optgroup label="🇸🇬 싱가포르">
+                                    <option value="싱가포르">싱가포르</option>
                                 </optgroup>
-                                <optgroup label="간사이">
-                                    <option name="destination" value="오사카">오사카</option>
-                                    <option name="destination" value="교토">교토</option>
+                                <optgroup label="🇲🇾 말레이시아">
+                                    <option value="쿠알라룸푸르">쿠알라룸푸르</option>
+                                    <option value="코타키나발루">코타키나발루</option>
                                 </optgroup>
-                                <optgroup label="시코쿠">
-                                    <option name="destination" value="도쿠시마">도쿠시마</option>
+                                <optgroup label="🇵🇭 필리핀">
+                                    <option value="마닐라">마닐라</option>
+                                    <option value="세부">세부</option>
+                                    <option value="보라카이">보라카이</option>
                                 </optgroup>
-                                <optgroup label="주코쿠">
-                                    <option name="destination" value="히로시마">히로시마</option>
+                                <optgroup label="🇮🇩 인도네시아">
+                                    <option value="발리">발리</option>
+                                    <option value="자카르타">자카르타</option>
                                 </optgroup>
-                                <optgroup label="규슈">
-                                    <option name="destination" value="규슈">규슈</option>
+                                <optgroup label="🇨🇳 중국">
+                                    <option value="베이징">베이징</option>
+                                    <option value="상하이">상하이</option>
+                                    <option value="홍콩">홍콩</option>
+                                    <option value="마카오">마카오</option>
                                 </optgroup>
-                                <optgroup label="오키나와">
-                                    <option name="destination" value="오키나와">오키나와</option>
+                                <optgroup label="🇹🇼 대만">
+                                    <option value="타이베이">타이베이</option>
+                                    <option value="가오슝">가오슝</option>
+                                </optgroup>
+
+                                <!-- 유럽 -->
+                                <optgroup label="🇫🇷 프랑스">
+                                    <option value="파리">파리</option>
+                                    <option value="니스">니스</option>
+                                    <option value="리옹">리옹</option>
+                                </optgroup>
+                                <optgroup label="🇮🇹 이탈리아">
+                                    <option value="로마">로마</option>
+                                    <option value="베니스">베니스</option>
+                                    <option value="피렌체">피렌체</option>
+                                    <option value="밀라노">밀라노</option>
+                                </optgroup>
+                                <optgroup label="🇪🇸 스페인">
+                                    <option value="바르셀로나">바르셀로나</option>
+                                    <option value="마드리드">마드리드</option>
+                                </optgroup>
+                                <optgroup label="🇬🇧 영국">
+                                    <option value="런던">런던</option>
+                                    <option value="에든버러">에든버러</option>
+                                </optgroup>
+                                <optgroup label="🇩🇪 독일">
+                                    <option value="베를린">베를린</option>
+                                    <option value="뮌헨">뮌헨</option>
+                                    <option value="프랑크푸르트">프랑크푸르트</option>
+                                </optgroup>
+                                <optgroup label="🇨🇭 스위스">
+                                    <option value="취리히">취리히</option>
+                                    <option value="제네바">제네바</option>
+                                </optgroup>
+                                <optgroup label="🇦🇹 오스트리아">
+                                    <option value="빈">빈</option>
+                                    <option value="잘츠부르크">잘츠부르크</option>
+                                </optgroup>
+
+                                <!-- 미주 -->
+                                <optgroup label="🇺🇸 미국">
+                                    <option value="뉴욕">뉴욕</option>
+                                    <option value="로스앤젤레스">로스앤젤레스</option>
+                                    <option value="샌프란시스코">샌프란시스코</option>
+                                    <option value="라스베이거스">라스베이거스</option>
+                                    <option value="시애틀">시애틀</option>
+                                    <option value="하와이">하와이</option>
+                                </optgroup>
+                                <optgroup label="🇨🇦 캐나다">
+                                    <option value="밴쿠버">밴쿠버</option>
+                                    <option value="토론토">토론토</option>
+                                    <option value="몬트리올">몬트리올</option>
+                                </optgroup>
+
+                                <!-- 오세아니아 -->
+                                <optgroup label="🇦🇺 호주">
+                                    <option value="시드니">시드니</option>
+                                    <option value="멜버른">멜버른</option>
+                                    <option value="골드코스트">골드코스트</option>
+                                </optgroup>
+                                <optgroup label="🇳🇿 뉴질랜드">
+                                    <option value="오클랜드">오클랜드</option>
+                                    <option value="퀸스타운">퀸스타운</option>
+                                </optgroup>
+
+                                <!-- 중동 -->
+                                <optgroup label="🇦🇪 아랍에미리트">
+                                    <option value="두바이">두바이</option>
+                                    <option value="아부다비">아부다비</option>
+                                </optgroup>
+                                <optgroup label="🇹🇷 터키">
+                                    <option value="이스탄불">이스탄불</option>
+                                    <option value="카파도키아">카파도키아</option>
                                 </optgroup>
                             </select>
                         </div>
@@ -346,6 +452,76 @@
                         </ul>
                     </fieldset>
                 </div>
+
+                <!-- 예산 설정 -->
+                <div>
+                    <fieldset class="select">
+                        <div class="budget-title">
+                            <legend><i class="fa-solid fa-wallet"></i> 예산 설정 (선택사항)</legend>
+                        </div>
+                        <div class="budget-input-container">
+                            <div class="budget-input-group">
+                                <label for="total-budget">총 예산:</label>
+                                <input type="number" id="total-budget" name="total-budget" placeholder="예: 2000000" min="0" step="10000">
+                                <span class="currency">원</span>
+                            </div>
+                            <div class="budget-breakdown">
+                                <p class="budget-breakdown-title">예산 카테고리별 가이드:</p>
+                                <div class="budget-categories">
+                                    <div class="budget-category-item">
+                                        <label for="budget-flight">
+                                            <i class="fa-solid fa-plane"></i> 항공권:
+                                        </label>
+                                        <input type="number" id="budget-flight" placeholder="예: 600000" min="0">
+                                        <span>원</span>
+                                    </div>
+                                    <div class="budget-category-item">
+                                        <label for="budget-accommodation">
+                                            <i class="fa-solid fa-hotel"></i> 숙박:
+                                        </label>
+                                        <input type="number" id="budget-accommodation" placeholder="예: 500000" min="0">
+                                        <span>원</span>
+                                    </div>
+                                    <div class="budget-category-item">
+                                        <label for="budget-food">
+                                            <i class="fa-solid fa-utensils"></i> 식비:
+                                        </label>
+                                        <input type="number" id="budget-food" placeholder="예: 400000" min="0">
+                                        <span>원</span>
+                                    </div>
+                                    <div class="budget-category-item">
+                                        <label for="budget-activity">
+                                            <i class="fa-solid fa-ticket"></i> 관광/활동:
+                                        </label>
+                                        <input type="number" id="budget-activity" placeholder="예: 300000" min="0">
+                                        <span>원</span>
+                                    </div>
+                                    <div class="budget-category-item">
+                                        <label for="budget-transport">
+                                            <i class="fa-solid fa-car"></i> 교통:
+                                        </label>
+                                        <input type="number" id="budget-transport" placeholder="예: 150000" min="0">
+                                        <span>원</span>
+                                    </div>
+                                    <div class="budget-category-item">
+                                        <label for="budget-shopping">
+                                            <i class="fa-solid fa-shopping-bag"></i> 쇼핑:
+                                        </label>
+                                        <input type="number" id="budget-shopping" placeholder="예: 200000" min="0">
+                                        <span>원</span>
+                                    </div>
+                                </div>
+                                <div class="budget-summary">
+                                    <strong>카테고리 합계: <span id="category-total">0</span>원</strong>
+                                    <p class="budget-note">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                        예산 정보를 입력하면 AI가 예산에 맞는 일정을 추천합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
                 <!-- 일정생성 버튼, 초기화 버튼 생성 -->
                 <div class="button-edit">
                     <!-- 일정생성 버튼 -->
@@ -371,8 +547,102 @@
                 id="chat-content"
                 placeholder="여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)"></textarea>
             </div>
-            <!-- 엑셀 내보내기 버튼 추가 -->
-            <button type="button" id="export-excel-btn">엑셀로 내보내기</button>
+            <!-- Google Maps 지도 표시 -->
+            <div id="map-container" class="map-container" style="display: none;">
+                <h3 class="map-title">
+                    <i class="fa-solid fa-map-location-dot"></i> 여행지 지도
+                </h3>
+                <div id="travel-map" class="travel-map">
+                    <!-- 지도가 여기에 표시됩니다 -->
+                </div>
+                <div class="map-links">
+                    <a id="google-maps-link" href="#" target="_blank" class="map-link">
+                        <i class="fa-brands fa-google"></i> 구글 맵에서 크게 보기
+                    </a>
+                </div>
+            </div>
+
+            <!-- 항공권 및 숙소 예약 링크 -->
+            <div id="booking-container" class="booking-container" style="display: none;">
+                <h3 class="booking-title">
+                    <i class="fa-solid fa-ticket"></i> 항공권 & 숙소 예약
+                </h3>
+
+                <div class="booking-sections">
+                    <!-- 항공권 예약 -->
+                    <div class="booking-section">
+                        <h4><i class="fa-solid fa-plane-departure"></i> 항공권 예약</h4>
+                        <p class="booking-subtitle">여러 사이트를 비교하여 최저가를 찾아보세요!</p>
+                        <div class="booking-links">
+                            <a href="#" id="skyscanner-link" class="booking-link skyscanner" target="_blank">
+                                <i class="fa-solid fa-plane"></i>
+                                <span>Skyscanner</span>
+                                <small>가격 비교</small>
+                            </a>
+                            <a href="#" id="google-flights-link" class="booking-link google-flights" target="_blank">
+                                <i class="fa-brands fa-google"></i>
+                                <span>Google Flights</span>
+                                <small>실시간 검색</small>
+                            </a>
+                            <a href="#" id="kayak-link" class="booking-link kayak" target="_blank">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <span>Kayak</span>
+                                <small>통합 검색</small>
+                            </a>
+                            <a href="https://www.naver.com/air" class="booking-link naver" target="_blank">
+                                <i class="fa-solid fa-n"></i>
+                                <span>네이버 항공권</span>
+                                <small>국내 최저가</small>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 숙소 예약 -->
+                    <div class="booking-section">
+                        <h4><i class="fa-solid fa-hotel"></i> 숙소 예약</h4>
+                        <p class="booking-subtitle">예산에 맞는 완벽한 숙소를 찾아보세요!</p>
+                        <div class="booking-links">
+                            <a href="#" id="booking-com-link" class="booking-link booking-com" target="_blank">
+                                <i class="fa-solid fa-bed"></i>
+                                <span>Booking.com</span>
+                                <small>호텔/게스트하우스</small>
+                            </a>
+                            <a href="#" id="airbnb-link" class="booking-link airbnb" target="_blank">
+                                <i class="fa-brands fa-airbnb"></i>
+                                <span>Airbnb</span>
+                                <small>현지 숙소</small>
+                            </a>
+                            <a href="#" id="agoda-link" class="booking-link agoda" target="_blank">
+                                <i class="fa-solid fa-building"></i>
+                                <span>Agoda</span>
+                                <small>아시아 특화</small>
+                            </a>
+                            <a href="#" id="hotels-com-link" class="booking-link hotels-com" target="_blank">
+                                <i class="fa-solid fa-hotel"></i>
+                                <span>Hotels.com</span>
+                                <small>10박 1박 무료</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-note">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <p>여행 일정에 맞춰 자동으로 검색 링크가 생성됩니다. 클릭하시면 해당 사이트에서 바로 예약하실 수 있습니다.</p>
+                </div>
+            </div>
+            <!-- Excel 내보내기 버튼 -->
+            <div class="export-button-container">
+                <button id="export-excel-btn" class="export-button" onclick="exportToExcel()">
+                    <i class="fa-solid fa-file-excel"></i> Excel로 내보내기
+                </button>
+                <button id="json-excel-btn" class="export-button json-excel-button" onclick="exportJSONToExcel()">
+                    <i class="fa-solid fa-table"></i> JSON Excel로 내보내기
+                </button>
+                <button id="json-download-btn" class="export-button json-download-button" onclick="downloadJSON()">
+                    <i class="fa-solid fa-code"></i> JSON 다운로드
+                </button>
+            </div>
         </div>
     </div>
 </main>
@@ -381,7 +651,11 @@
     <!-- footer -->
     <footer class="footer">
         <div>
-            
+            <div class="icon">
+                <a href="https://github.com/kimyeoju"><i id="icon"class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/yeoju_uj/"><i id="icon"class="fa-brands fa-instagram"></i></a>
+                <a href="https://m.blog.naver.com/d_d0031?fbclid=PAAaaebyCsm_LHxDJRsaHPkBV37CbW8DErKLOhvhiKhOE8rvDjmURfPpoY19k_aem_th_AYRZifwGLHEk9tZ-Te2Zh-GCO6n2ySLsvv8wOPgJtJxTlTBhPdT0BPMWKik6sbAZ8g0" ><i id="icon" class="fa-solid fa-blog"></i></a>
+            </div>
             Copyright 2023. Travel Japan All rights reserved
         </div>
     </footer>
@@ -389,32 +663,15 @@
 
     <!-- javascript 연동 -->
     <script src="./JS/data.js"></script>
+    <script src="./JS/api-key-manager.js"></script>
     <script src="./JS/loader.js"></script>
     <script src="./JS/main.js"></script>
     <script src="./JS/menu.js"></script>
     <script src="./JS/reset.js"></script>
     <script src="./JS/scroll.js"></script>
-
-     <!-- 엑셀 내보내기 기능 JavaScript -->
-     <script>
-        document.getElementById('export-excel-btn').addEventListener('click', function () {
-            const travelText = document.getElementById('chat-content').value;
-
-            // 엑셀 시트에 들어갈 데이터 배열 (헤더 및 내용)
-            const ws_data = [
-                ["여행 일정"],
-                [travelText]
-            ];
-
-            // 워크북과 워크시트 생성
-            const wb = XLSX.utils.book_new();
-            const ws = XLSX.utils.aoa_to_sheet(ws_data);
-            XLSX.utils.book_append_sheet(wb, ws, "일정");
-
-            // 엑셀 파일 다운로드 실행
-            XLSX.writeFile(wb, "travel_schedule.xlsx");
-        });
-    </script>
+    <script src="./JS/map.js"></script>
+    <script src="./JS/booking.js"></script>
+    <script src="./JS/export.js"></script>
+    <script src="./JS/json-export.js"></script>
 </body>
-</html>
 </html>
