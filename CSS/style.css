@@ -261,6 +261,8 @@ legend{
 
 .popular-city-list{
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 
@@ -417,11 +419,12 @@ select:focus,
     font-weight: bold;
 }
 
-/* user 여행 일정 입력, 답변 칸 div 나란히 정렬 */
 
-.chat-container{
+/* [수정] 플래너 섹션 입력폼 중앙 정렬 */
+.chat-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center; /* 입력폼을 화면 중앙으로 */
+    /* space-evenly 제거 */
     border-radius: 4px;
     font-size: large;
     flex-wrap: wrap;
@@ -659,6 +662,7 @@ select:focus,
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 9999; /* [추가] 항상 맨 위에 보이도록 설정 */
 }
 
 /* footer */
@@ -1230,8 +1234,8 @@ select:focus,
 .booking-link.naver i { color: #03C75A; }
 .booking-link.booking-com i { color: #003580; }
 .booking-link.airbnb i { color: #FF5A5F; }
-.booking-link.agoda i { color: #D7372E; }
 .booking-link.hotels-com i { color: #D32F2F; }
+.booking-link.expedia i { color: #003580; }
 
 .booking-note {
     padding: 16px;
@@ -1679,4 +1683,374 @@ html {
         padding: 8px 15px;
         font-size: 0.8rem;
     }
+}
+
+/* =========================================
+   환율 및 지도 도구 섹션 스타일 (최종 정렬 수정)
+   ========================================= */
+
+/* 전체 컨테이너 */
+.tools-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+/* 공통 박스 스타일 */
+.tool-box {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    border: 2px solid var(--border-color);
+    padding: 30px;
+    flex: 1;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-title {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+/* =========================================
+   환율 및 지도 도구 섹션 스타일 (정렬 초기화 및 통일)
+   ========================================= */
+
+/* 전체 컨테이너 */
+.tools-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+/* 공통 박스 스타일 */
+.tool-box {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    border: 2px solid var(--border-color);
+    padding: 30px;
+    flex: 1;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-title {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+/* ----------------------------------
+   [왼쪽] 환율 계산기 스타일
+   ---------------------------------- */
+.exchange-converter {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end; /* 바닥 라인 기준 정렬 */
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+/* 입력 그룹 (왼쪽/오른쪽) */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* 공간 꽉 채우기 */
+    width: 0; /* Flex item 너비 계산 오류 방지용 */
+}
+
+/* --- [1] 윗줄 스타일 (라벨 & 선택박스) --- */
+/* 높이와 여백을 통일하여 기준선 맞춤 */
+.input-group label, 
+.input-group select {
+    height: 45px;
+    width: 100%;
+    margin: 0 0 10px 0; /* 하단 여백 10px로 통일 */
+    box-sizing: border-box; /* 테두리 포함 크기 계산 */
+}
+
+.input-group label {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.input-group select {
+    padding: 0 10px;
+    border: 2px solid #ccc; /* 테두리 두께 2px */
+    border-radius: 8px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-size: 1rem;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* --- [2] 아랫줄 스타일 (입력창 & 결과창) --- */
+/* 두 입력창의 스타일을 완벽하게 일치시킴 */
+.input-group input {
+    width: 100%;
+    height: 55px;
+    margin: 0; /* 불필요한 여백 제거 */
+    padding: 0 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-sizing: border-box; /* 테두리 포함 크기 계산 */
+    background-color: #f9f9f9;
+}
+
+/* 이전에 있던 인위적인 이동 코드(left, position 등)를 모두 제거했습니다. */
+#foreign-input {
+    /* 별도 스타일 없음 - 위 공통 스타일 따름 */
+}
+
+/* --- [3] 가운데 화살표 정렬 --- */
+.exchange-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px; /* 입력창 높이와 동일 */
+    min-width: 50px; /* 너비 충분히 확보 */
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+/* 포커스 효과 */
+.input-group input:focus, .input-group select:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    background-color: #fff;
+}
+
+.exchange-rate-info {
+    font-size: 1rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: var(--background-light);
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.tool-btn {
+    width: 100%;
+    height: 55px;
+    background: linear-gradient(135deg, var(--accent-color), #0EA5E9);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: auto;
+}
+
+.tool-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+}
+
+/* ----------------------------------
+   [오른쪽] 지도 검색 스타일
+   ---------------------------------- */
+.search-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-group input {
+    flex: 1;
+    height: 50px;
+    padding: 0 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+}
+
+.search-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 60px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    flex-shrink: 0;
+}
+
+.search-btn:hover {
+    background: #d32f2f;
+}
+
+.mini-map-container {
+    flex: 1;
+    min-height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+/* 모바일 반응형 */
+@media (max-width: 900px) {
+    .tools-container {
+        flex-direction: column;
+    }
+    .mini-map-container {
+        min-height: 300px;
+    }
+}
+
+/* =========================================
+   [최종] 결과 페이지 레이아웃 (지도 높이 자동 맞춤)
+   ========================================= */
+
+.result-grid-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 40px;
+    /* [핵심] 자식 요소들의 높이를 동일하게 강제함 */
+    align-items: stretch; 
+    flex-wrap: wrap;
+}
+
+/* 지도와 예약 박스 공통 스타일 */
+.box-style {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    border: 2px solid var(--border-color);
+    padding: 25px;
+    box-sizing: border-box;
+    /* Flex 아이템 설정 */
+    flex: 1;
+    min-width: 320px; /* 너무 좁아지면 줄바꿈 */
+    display: flex;
+    flex-direction: column; /* 내부 요소 세로 정렬 */
+}
+
+/* 지도 컨테이너 내부 설정 */
+.map-container {
+    /* 지도가 박스를 꽉 채우도록 설정 */
+    height: auto; 
+}
+
+/* 구글 맵 영역이 남은 공간을 모두 차지하게 함 */
+.travel-map {
+    flex-grow: 1; /* 남은 빈 공간을 지도가 다 먹어서 높이를 채움 */
+    width: 100%;
+    min-height: 400px; /* 최소 높이 보장 */
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+/* iframe 강제 높이 설정 */
+.travel-map iframe {
+    height: 100% !important;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 800px) {
+    .result-grid-container {
+        flex-direction: column;
+    }
+    /* 모바일에서는 높이 자동 */
+    .travel-map {
+        min-height: 300px;
+    }
+}
+
+/* =========================================
+   [추가] 결과 페이지(4섹션) 전체 여백 설정
+   ========================================= */
+
+/* 4번째 섹션의 내용 박스에 좌우 여백을 줍니다 */
+#section-result .content-wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box; /* 테두리나 패딩이 너비에 포함되도록 설정 */
+    width: 100%;            /* 전체 너비 사용 */
+}
+
+/* 모바일 환경에서는 여백을 조금 더 줄여서 화면을 넓게 쓰기 */
+@media (max-width: 768px) {
+    #section-result .content-wrap {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+/* =========================================
+   [긴급 수정] 네이버 버튼 스타일 복구
+   ========================================= */
+
+/* 네이버 버튼 박스 (핑크색 테두리 유지) */
+.booking-link.naver {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 2px solid #FFD4D4 !important;
+    box-shadow: 0 2px 8px rgba(230, 57, 70, 0.1);
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+/* 1. 네이버 'N' 로고 (아이콘 대용) */
+.booking-link.naver .naver-icon {
+    display: block !important;
+    color: #03C75A !important;  /* 네이버 초록색 */
+    font-weight: 900 !important; /* 아주 굵게 */
+    font-family: sans-serif !important;
+    font-size: 2rem !important;  /* 아이콘만큼 크게 */
+    margin-bottom: 5px !important;
+    line-height: 1 !important;
+}
+
+/* 2. 'Naver' 텍스트 */
+.booking-link.naver .naver-text {
+    display: block !important;
+    color: #2C3E50 !important; /* 진한 남색 (잘 보이게) */
+    font-weight: bold !important;
+    font-size: medium !important;
+}
+
+/* 마우스 올렸을 때 효과 */
+.booking-link.naver:hover {
+    border-color: #06B6D4 !important;
+    transform: translateY(-4px);
+    background: #fff; /* 배경 흰색 유지 */
 }

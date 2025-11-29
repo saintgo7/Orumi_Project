@@ -7,6 +7,7 @@
     <script src="https://kit.fontawesome.com/9e9931aed0.js" crossorigin="anonymous"></script>
     <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="stylesheet" href="./CSS/slide.css">
     <link rel="stylesheet" href="./CSS/menu.css">
@@ -195,6 +196,68 @@
                                 <li>"Get API Key" 또는 "API 키 만들기"를 클릭하세요</li>
                                 <li>생성된 API 키를 복사하여 위 입력란에 붙여넣으세요</li>
                             </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tools-container">
+                    <div class="tool-box exchange-box">
+                        <h3 class="tool-title"><i class="fa-solid fa-money-bill-1-wave"></i> 실시간 환율 계산</h3>
+                        
+                        <div class="exchange-converter">
+                            <div class="input-group">
+                                <label>대한민국 (KRW)</label>
+                                <input type="text" id="krw-input" value="1,000" placeholder="원화 입력" style="text-align: right;">
+                            </div>
+
+                            <div class="exchange-icon">
+                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                            </div>
+
+                            <div class="input-group">
+                                <select id="currency-select">
+                                    <option value="JPY" selected>일본 (JPY)</option>
+                                    <option value="USD">미국 (USD)</option>
+                                    <option value="EUR">유럽 (EUR)</option>
+                                    <option value="CNY">중국 (CNY)</option>
+                                    <option value="THB">태국 (THB)</option>
+                                    <option value="VND">베트남 (VND)</option>
+                                    <option value="PHP">필리핀 (PHP)</option>
+                                    <option value="SGD">싱가포르 (SGD)</option>
+                                    <option value="AUD">호주 (AUD)</option>
+                                    <option value="CAD">캐나다 (CAD)</option>
+                                    <option value="GBP">영국 (GBP)</option>
+                                    <option value="CHF">스위스 (CHF)</option>
+                                    <option value="HKD">홍콩 (HKD)</option>
+                                    <option value="TWD">대만 (TWD)</option>
+                                    <option value="AED">아랍에미리트 (AED)</option>
+                                    <option value="TRY">튀르키예 (TRY)</option>
+                                </select>
+                                <input type="text" id="foreign-input" readonly placeholder="환전 금액" style="text-align: right;">
+                            </div>
+                        </div>
+
+                        <p class="exchange-rate-info" id="rate-info">현재 환율 정보를 불러오는 중...</p>
+                        
+                        <button onclick="calculateExchange()" class="tool-btn">환율 계산하기</button>
+                    </div>
+
+                    <div class="tool-box map-search-box">
+                        <h3 class="tool-title"><i class="fa-solid fa-map-location-dot"></i> 장소 검색</h3>
+                        <div class="search-group">
+                            <input type="text" id="map-search-input" placeholder="예: 도쿄 타워, 오사카 맛집" onkeypress="if(event.keyCode==13) {searchPlace(); return false;}">
+                            <button onclick="searchPlace()" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                        <div class="mini-map-container">
+                            <iframe 
+                                id="mini-map-frame"
+                                width="100%" 
+                                height="100%" 
+                                frameborder="0" 
+                                style="border:0" 
+                                src="https://maps.google.com/maps?q=Japan&output=embed" 
+                                allowfullscreen>
+                            </iframe>
                         </div>
                     </div>
                 </div>
@@ -432,9 +495,6 @@
                             <div class="button-edit">
                                 <div class="create-travel">
                                     <button class="submit-button" type="submit" id="button" onclick="btnshow()">일정 생성</button>
-                                    <div id="loading-gif" style="display: none;">
-                                        <img src="./Img/spin.gif" alt="로딩이미지">
-                                    </div>
                                 </div>
                                 <div class="reset-travel">
                                     <button id="button" type="reset" onclick="reset()">초기화</button>
@@ -442,16 +502,69 @@
                             </div>
                         </div>
                     </form>
+                </div>               
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div>
+                <div class="icon">
+                    <a href="https://github.com/kimyeoju"><i id="icon" class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/yeoju_uj/"><i id="icon" class="fa-brands fa-instagram"></i></a>
+                    <a href="https://m.blog.naver.com/"><i id="icon" class="fa-solid fa-blog"></i></a>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <section id="section-result" style="display: none;">
+        <header class="header">
+            <h1>
+                <div class="header-click">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <a href="./index.html">Travel Planner</a>
+                </div>
+            </h1>
+            <ul class="menu">
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./join.html">회원가입</a></li>
+            </ul>
+            <a href="#" class="header_toogleBtn">
+                <i class="fas fa-bars"></i>
+            </a>
+        </header>
+
+        <main class="wrap" style="padding-top: 40px;">
+            <div class="content-wrap" style="text-align: center;">
+                
+                <div id="result-title-box" style="margin-bottom: 30px;">
+                    <h2 style="color: var(--primary-color); font-size: 2rem;">✨ 당신만의 여행 계획이 완성되었습니다!</h2>
+                    <p style="color: var(--text-light);">AI가 추천하는 최적의 일정을 확인해보세요</p>
                 </div>
 
-                <div class="chat-answer">
-                    <div id="answer">
-                        <div id="chat-content" style="overflow-y: auto; text-align: left; height: 330px; padding: 20px; background: #ffffff; border: 2px solid #06B6D4; border-radius: 12px;">
-                            여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)
-                        </div>
+                <div id="answer">
+                    <div id="chat-content" style="overflow-y: auto; text-align: left; height: 500px; padding: 30px; background: #ffffff; border: 2px solid #06B6D4; border-radius: 12px; width: 100%; box-sizing: border-box;">
+                        여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)
                     </div>
-                    
-                    <div id="map-container" class="map-container" style="display: none;">
+                </div>
+
+                <div class="modification-section" style="margin-top: 30px; text-align: left;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 10px; margin-left: 5px;">
+                        <i class="fa-solid fa-pen-to-square"></i> 일정 수정
+                    </h3>
+                    <div class="modification-box" style="display: flex; gap: 10px; width: 100%; box-sizing: border-box;">
+                        <input type="text" id="modify-input" 
+                               placeholder="예: 2일차 저녁은 해산물 요리로 바꿔줘, 3일차에 박물관 일정 추가해줘" 
+                               style="flex: 1; padding: 15px; border: 2px solid #FFD4D4; border-radius: 12px; font-size: 1rem; font-family: 'IBM Plex Sans KR', sans-serif;"
+                               onkeypress="if(event.keyCode==13) {regeneratePlan(); return false;}">
+                        <button onclick="regeneratePlan()" class="submit-button" style="width: 120px; margin: 0; background: linear-gradient(135deg, #FF6B9D, #E63946); font-size: 1rem; flex-shrink: 0;">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> 수정
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="result-grid-container">
+                    <div id="map-container" class="map-container box-style" style="display: none;">
                         <h3 class="map-title"><i class="fa-solid fa-map-location-dot"></i> 여행지 지도</h3>
                         <div id="travel-map" class="travel-map"></div>
                         <div class="map-links">
@@ -459,27 +572,49 @@
                         </div>
                     </div>
 
-                    <div id="booking-container" class="booking-container" style="display: none;">
+                    <div id="booking-container" class="booking-container box-style" style="display: none;">
                         <h3 class="booking-title"><i class="fa-solid fa-ticket"></i> 항공권 & 숙소 예약</h3>
                         <div class="booking-sections">
                             <div class="booking-section">
                                 <h4><i class="fa-solid fa-plane-departure"></i> 항공권 예약</h4>
                                 <div class="booking-links">
-                                    <a href="#" id="skyscanner-link" class="booking-link skyscanner" target="_blank"><i class="fa-solid fa-plane"></i><span>Skyscanner</span></a>
-                                    <a href="#" id="google-flights-link" class="booking-link google-flights" target="_blank"><i class="fa-brands fa-google"></i><span>Google Flights</span></a>
+                                    <a href="#" id="skyscanner-link" class="booking-link skyscanner" target="_blank">
+                                        <i class="fa-solid fa-plane-up"></i><span>Skyscanner</span>
+                                    </a>
+                                    <a href="#" id="google-flights-link" class="booking-link google-flights" target="_blank">
+                                        <i class="fa-brands fa-google"></i><span>Google Flights</span>
+                                    </a>
+                                    <a href="#" id="kayak-link" class="booking-link kayak" target="_blank">
+                                        <i class="fa-solid fa-k"></i><span>Kayak</span>
+                                    </a>
+                                    <a href="#" id="naver-flight-link" class="booking-link naver" target="_blank">
+                                        <span class="naver-icon">N</span>
+                                        <span class="naver-text">Naver</span>
+                                    </a>
                                 </div>
                             </div>
                             <div class="booking-section">
                                 <h4><i class="fa-solid fa-hotel"></i> 숙소 예약</h4>
                                 <div class="booking-links">
-                                    <a href="#" id="booking-com-link" class="booking-link booking-com" target="_blank"><i class="fa-solid fa-bed"></i><span>Booking.com</span></a>
-                                    <a href="#" id="airbnb-link" class="booking-link airbnb" target="_blank"><i class="fa-brands fa-airbnb"></i><span>Airbnb</span></a>
+                                    <a href="#" id="booking-com-link" class="booking-link booking-com" target="_blank">
+                                        <i class="fa-solid fa-bed"></i><span>Booking.com</span>
+                                    </a>
+                                    <a href="#" id="airbnb-link" class="booking-link airbnb" target="_blank">
+                                        <i class="fa-brands fa-airbnb"></i><span>Airbnb</span>
+                                    </a>
+                                    <a href="#" id="expedia-link" class="booking-link expedia" target="_blank">
+                                        <i class="fa-solid fa-suitcase"></i><span>Expedia</span>
+                                    </a>
+                                    <a href="#" id="hotels-com-link" class="booking-link hotels-com" target="_blank">
+                                        <i class="fa-solid fa-h"></i><span>Hotels.com</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="export-button-container">
+                </div>
+                
+                    <div class="export-button-container" style="margin-top: 30px;">
                         <button id="export-excel-btn" class="export-button" onclick="exportToExcel()">
                             <i class="fa-solid fa-file-excel"></i> Excel로 내보내기
                         </button>
@@ -490,6 +625,13 @@
                             <i class="fa-solid fa-code"></i> JSON 다운로드
                         </button>
                     </div>
+
+                    <div style="margin-top: 40px; margin-bottom: 60px;">
+                        <button onclick="backToPlanner()" class="submit-button" style="background: linear-gradient(135deg, #999, #bbb); width: 200px;">
+                            <i class="fa-solid fa-rotate-left"></i> 다시 계획하기
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </main>
@@ -504,6 +646,10 @@
             </div>
         </footer>
     </section>
+
+    <div id="loading-gif" style="display: none;">
+        <img src="./Img/spin.gif" alt="로딩이미지">
+    </div>
 
     <script src="./JS/data.js"></script>
     <script src="./JS/api-key-manager.js"></script>
