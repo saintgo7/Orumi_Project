@@ -73,7 +73,7 @@ ul {
 /* 로그인 페이지 */
 
 .login{
-    width: 380px;
+    width: 500px;
     margin: 100px auto;
     font-size: large;
 }
@@ -100,7 +100,7 @@ form > div {
 
 [type="text"],
 [type="password"] {
-    width: 290px;
+    width: 350px;
     height: 40px;
     border: 2px solid var(--border-color);
     border-radius: 8px;
@@ -142,7 +142,7 @@ form > div {
 }
 
 .join{
-    width: 510px;
+    width: 650px;
     margin: 80px auto;
     padding: 40px;
     background: var(--card-bg);
