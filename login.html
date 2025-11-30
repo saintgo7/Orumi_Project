@@ -40,7 +40,7 @@
         </div>
         <div class="pw">
           <label for="user-pw">비밀번호</label>
-          <input type="text" id="user-pw" name="Userpw">
+          <input type="password" id="user-pw" name="Userpw">
         </div>
         <div class="save-id">
           <input type="checkbox" id="save-id">
@@ -68,7 +68,15 @@
       <!-- main -->
     </div>
   </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="./JS/firebase-config.js"></script>
   <script src="./JS/menu.js"></script>
+  <script src="./JS/login.js"></script>
 
 </body>
 </html>
