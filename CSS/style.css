@@ -100,7 +100,7 @@ form > div {
 
 [type="text"],
 [type="password"] {
-    width: 350px;
+    width: 400px;
     height: 40px;
     border: 2px solid var(--border-color);
     border-radius: 8px;
@@ -1321,6 +1321,7 @@ select:focus,
 /* 소셜 로그인 전체 컨테이너 */
 .social-login-wrapper {
     margin-top: 30px;
+    margin-bottom: 30px;
     text-align: center;
 }
 
@@ -1427,7 +1428,7 @@ select:focus,
 
 /* 입력창 너비 조절 */
 .login input[type="text"] {
-    width: 230px;         /* 기존 290px에서 줄여서 라벨 공간 확보 */
+    width: 350px;    
 }
 
 /* 기존에 아이디 부분에만 들어가 있던 불필요한 여백 제거 (선택 사항) */
