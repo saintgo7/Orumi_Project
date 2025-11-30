@@ -12,21 +12,17 @@
     <title>Join</title>
 </head>
 <body>
-    <!-- 메뉴바 상단 고정 -->
-    <div class="header">
+   <div class="header">
         <h1>
             <div class="header-click">
                 <i class="fa-solid fa-globe"></i>
-                    <a href="https://kimyeoju.github.io/Orumi_Project/">Travel Japan</a>
+                <a href="./index.html">Travel Planner</a>
             </div>
         </h1>
         <ul class="menu">
-            <li><a href="./index.html#city-title">이용 방법</a></li>
-            <li><a href="./index.html#chat-box">여행 계획</a></li>
-            <li><a href="./join.html">회원가입</a></li>
-            <li><a href="./login.html">로그인</a></li>
+            <li><a href="./index.html">홈으로</a></li>
         </ul>
-        <a href="#" class="header_toogleBtn">
+        <a href="#" class="header_toogleBtn" title="Menu">
             <i class="fas fa-bars"></i>
         </a>
     </div>
@@ -36,6 +32,25 @@
             <h1 class="title">회원가입</h1>
             <h2 class="description">원활한 서비스 이용을 위해 회원가입을 해주세요</h2>
         </div>
+
+        <div class="social-login-wrapper">
+            <div class="social-buttons">
+                <a href="#" class="social-btn google" title="Google Login">
+                    <i class="fa-brands fa-google"></i>
+                </a>
+                <a href="#" class="social-btn kakao" title="Kakao Login">
+                    <i class="fa-solid fa-comment"></i>
+                </a>
+                <a href="#" class="social-btn naver" title="Naver Login">
+                    <span>N</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="signup-divider">
+            <span>또는 이메일로 가입</span>
+        </div>
+        <form class="join-form">
         <!-- main -->
         <!-- 사용자 기본정보 -->
         <form class="join-form">
@@ -44,7 +59,7 @@
                 <input type="text" id="user-id" name="UserId">
             </div>
             <div>
-                <label class="label-width"for="email">이메일</label>
+                <label class="label-width" for="user-email">이메일</label>
                 <input type="text" id="user-email" name="UserEmail">
             </div>
             <div>
@@ -107,6 +122,7 @@
                 </ul>
             </fieldset>
 
+            
             <!-- 회원가입 버튼 -->
             <button class="submit-button" type="submit">회원가입</button>
         </div>

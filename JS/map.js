@@ -1,11 +1,18 @@
-// Google Maps 표시 기능
+// Google Maps 표시 기능 (AI 연동 및 최신 URL 적용)
 
-// 여행지 정보 추출 및 지도 표시
 function displayTravelMap() {
-    const destination = document.getElementById("destination").value;
+    // 1. 기본 사용자 입력값 가져오기
+    let destination = document.getElementById("destination").value;
 
     if (!destination) {
         return;
+    }
+
+    // 2. AI가 변경한 여행지 정보가 있는지 확인
+    const aiDataBox = document.getElementById('ai-travel-data');
+    if (aiDataBox && aiDataBox.dataset.endName) {
+        console.log(`🗺️ 지도: AI가 제안한 여행지(${aiDataBox.dataset.endName})로 업데이트합니다.`);
+        destination = aiDataBox.dataset.endName;
     }
 
     // 지도 컨테이너 표시
@@ -17,26 +24,14 @@ function displayTravelMap() {
         return;
     }
 
+    // 섹션이 보일 때만 지도 표시
     mapContainer.style.display = 'block';
 
-    // 일본 주요 도시 좌표
-    const cityCoordinates = {
-        '삿포로': '43.0642,141.3469',
-        '센다이': '38.2682,140.8694',
-        '도쿄': '35.6762,139.6503',
-        '나고야': '35.1815,136.9066',
-        '오사카': '34.6937,135.5023',
-        '교토': '35.0116,135.7681',
-        '도쿠시마': '34.0658,134.5594',
-        '히로시마': '34.3853,132.4553',
-        '규슈': '33.5904,130.4017', // 후쿠오카 기준
-        '오키나와': '26.2124,127.6809'
-    };
-
-    const coordinates = cityCoordinates[destination] || '35.6762,139.6503'; // 기본값: 도쿄
-    const cityName = destination;
-
-    // Google Maps Embed API 사용 (완전 무료)
+    // 3. 지도 URL 생성 (수정됨: '여행' 키워드 제거)
+    // 도시 이름만 깔끔하게 검색해야 지도가 정확한 위치를 찾습니다.
+    const query = destination; 
+    
+    // Google Maps Embed URL
     const mapHTML = `
         <iframe
             width="100%"
@@ -45,48 +40,33 @@ function displayTravelMap() {
             loading="lazy"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent(cityName)},일본&zoom=12&language=ko">
+            src="https://maps.google.com/maps?q=${encodeURIComponent(query)}&output=embed">
         </iframe>
     `;
 
     travelMap.innerHTML = mapHTML;
 
-    // 구글 맵 링크 설정
-    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cityName)}+일본`;
-    googleMapsLink.href = mapsUrl;
-}
-
-// 맛집 정보에서 링크 생성
-function createRestaurantLinks() {
-    const content = document.getElementById('chat-content').value;
-
-    if (!content) return;
-
-    // 맛집 정보 패턴 찾기: "맛집명 (일본어명)" 형태
-    const restaurantPattern = /(?:아침|점심|저녁|식사):\s*([^(]+)\s*\(([^)]+)\)/g;
-    const matches = [...content.matchAll(restaurantPattern)];
-
-    if (matches.length > 0) {
-        console.log(`${matches.length}개의 맛집 정보를 찾았습니다.`);
-        // 여기서 필요시 맛집 링크 정보를 추가로 처리할 수 있습니다
+    // 4. 구글 맵 '크게 보기' 링크 업데이트
+    if (googleMapsLink) {
+        const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(query)}`;
+        googleMapsLink.href = mapsUrl;
     }
 }
 
-// 답변 수신 후 자동으로 지도 표시
-window.addEventListener('DOMContentLoaded', function() {
+// 답변 생성 감지 및 지도 업데이트
+document.addEventListener('DOMContentLoaded', function() {
     const chatContent = document.getElementById('chat-content');
 
     if (chatContent) {
-        // 답변 내용이 변경될 때마다 확인
+        // 답변이 작성되는 동안(input)에는 너무 빈번하므로,
+        // 일정 생성이 거의 완료되었을 때나 변경이 감지되었을 때 실행
         chatContent.addEventListener('input', function() {
-            const content = chatContent.value;
+            const content = chatContent.innerText;
 
-            // 실제 답변이 있을 때만 지도 표시
-            if (content && content !== '여행 일정이 완성되고 있습니다. 잠시만 기다려주세요 :)') {
-                setTimeout(() => {
-                    displayTravelMap();
-                    createRestaurantLinks();
-                }, 500);
+            // 내용이 충분히 생성되었을 때 지도 표시
+            if (content && content.length > 100) {
+                // 약간의 딜레이를 주어 AI 데이터 박스가 생성된 후 지도를 그립니다.
+                setTimeout(displayTravelMap, 500); 
             }
         });
     }

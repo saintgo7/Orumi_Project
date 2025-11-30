@@ -12,24 +12,21 @@
   <title>Login</title>
 </head>
 <body>
-    <!-- 메뉴바 상단 고정 -->
     <div class="header">
       <h1>
           <div class="header-click">
               <i class="fa-solid fa-globe"></i>
-                  <a href="https://kimyeoju.github.io/Orumi_Project/">Travel Japan</a>
+              <a href="./index.html">Travel Planner</a>
           </div>
       </h1>
       <ul class="menu">
-        <li><a href="./index.html#city-title">이용 방법</a></li>
-        <li><a href="./index.html#chat-box">여행 계획</a></li>
+        <li><a href="./index.html">홈으로</a></li>
         <li><a href="./join.html">회원가입</a></li>
-        <li><a href="./login.html">로그인</a></li>
       </ul>
       <a href="#" class="header_toogleBtn">
           <i class="fas fa-bars"></i>
       </a>
-      </div>
+    </div>
   <!-- header -->
   <div class="login">
     <div>
@@ -51,9 +48,27 @@
         </div>
           <button class="submit-button" type="submit">로그인</button>
       </form>
+      
+      <div class="social-login-wrapper">
+        <p class="social-login-title">SNS 계정으로 간편 로그인</p>
+        <div class="social-buttons">
+            <a href="#" class="social-btn google" title="Google로 로그인">
+                <i class="fa-brands fa-google"></i>
+            </a>
+            <a href="#" class="social-btn kakao" title="카카오로 로그인">
+                <i class="fa-solid fa-comment"></i>
+            </a>
+            <a href="#" class="social-btn naver" title="네이버로 로그인">
+                <span>N</span>
+            </a>
+        </div>
+      </div>
+      
+      </div>
       <!-- main -->
     </div>
   </div>
+
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>

@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 선호하는 여행테마 가져오기
         const favoriteInputs = document.querySelectorAll('input[name="FoodTravel"], input[name="NatureTravel"], input[name="Ruins"], input[name="Activity"], input[name="SakeTravel"], input[name="OnsenTravel"]');
-        let favorites = [];
+        favorites = [];
         favoriteInputs.forEach(input => {
             if (input.checked) {
                 favorites.push(input.id);
