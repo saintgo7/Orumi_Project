@@ -30,7 +30,7 @@
 - 2025년 09월 30일 ~ 2025년 11월 30일
 
 ### 2.3 배포 URL
-- https://kimyeoju.github.io/Orumi_Project/
+- [https://kimyeoju.github.io/Orumi_Project/](https://github.com/saintgo7/Orumi_Project/tree/claude/analyze-codebase-016pkkerA6F4DW38rQ4tNUy1)
 
 ## 3. 프로젝트 구조와 개발 일정
 ### 3.1 프로젝트 구조
@@ -72,7 +72,7 @@
 ---
  
  ### 3.2 개발 일정
- - 2025년 09월 30일 ~ 2025년 11월 30일
+ - 2025년 09월 30일 ~ 2025년 12월 1일
    * 프로젝트 시작
    * 여행 플래너 아이디어 구상
    * HTML 구조 생성, CSS를 활용하여 간단한 디자인 완성
@@ -84,7 +84,7 @@
    * 여러 장 사진을 CSS를 통해 이미지 슬라이드 구현
    * CSS로 전체적인 웹 페이지 구조 완성
  
- - 2025년 10월 14일 ~ 2025년 11월 15일
+ - 2025년 10월 15일 ~ 2025년 11월 15일
    * 회원가입, 로그인, 시작화면 Html 생성
    * button을 누르면 로딩 이미지가 보여지는 함수와 로딩이 종료되는 함수 구현
    * CSS를 통해 로딩 이미지 가운데로 설정
@@ -106,30 +106,11 @@
   * 화면 크기 변화에 따른 반응형 코드 추가
   * 화면 구성, 로딩 속도 고려
   * 실시간 환율계산 기능 추가
-  * 리셋 버튼, 로딩 이미지 수정
  
-- -> 추후에 추가 될 기능
-  * 모바일, 웹 환경에 따라 미디어 쿼리 구현중
-  * 실시간 날씨정보 기능 추가
-  * 게시판, 마이페이지 추가
-  * 생성한 일정 저장 기능 추
 
 ## 4. UI
+- 메인 페이지(index.html), 로그인(login.html), 회원가입(join.html) 화면으로 구성되어 있습니다.
 
- ### - **index.html**
- * 웹 페이지
-![kimyeoju github io_Orumi_Project_ (4)](https://github.com/kimyeoju/Orumi_Project/assets/131739526/a48da348-2e6f-4602-8f00-12c396390451)
-
-
-
-### - **login.html**
-* 로그인 페이지
-![kimyeoju github io_Orumi_Project_login html (1)](https://github.com/kimyeoju/Orumi_Project/assets/131739526/9032522e-50a9-4328-815d-bf8e262a88f0)
-
-
-### - **join.html**
-* 회원가입 페이지
-![kimyeoju github io_Orumi_Project_join html (1)](https://github.com/kimyeoju/Orumi_Project/assets/131739526/865b5a4c-8db3-40b7-880e-98e4d5453484)
 
 ## 5. 메인 기능
 
@@ -153,3 +134,18 @@
   - 여러 여행 테마 동시 선택 가능
   - 더 자세한 시스템 프롬프트로 응답 품질 향상
   - 에러 핸들링 개선
+
+## 7. 사용 기술
+
+- Frontend: HTML, CSS, JavaScript
+- AI: Google Gemini API
+- 인증/데이터: Firebase, Firestore
+- 기타: 외부 환율 API, 지도 API, OpenWeather
+
+## 8. 추후 추가 기능
+
+- 모바일·웹 환경에 따른 미디어 쿼리 보완 (반응형 강화)
+- 실시간 날씨 정보 연동
+- 게시판, 마이페이지 추가
+- 생성한 여행 일정 저장 및 관리 기능
+
